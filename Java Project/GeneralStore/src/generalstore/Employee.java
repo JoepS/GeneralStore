@@ -8,6 +8,9 @@ package generalstore;
  *
  * @author Matthijs
  */
-public class Employee {
+public class Employee extends Person{
     
+    public Employee(String fName, String lName, int lvl, String race, Boolean gender){
+        super(fName, lName, lvl, race, gender);
+    }
 }
