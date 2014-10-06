@@ -10,6 +10,9 @@ package generalstore;
  *
  * @author Fré-Meine
  */
-public class Customer {
+public class Customer extends Person{
     
+    public Customer(String fName, String lName, int lvl, String race, Boolean gender){
+        super(fName, lName, lvl, race, gender);
+    }
 }
