@@ -11,7 +11,7 @@ import java.util.List;
  * @author Joep
  */
 public class Warehouse {
-    List<Products> Products_warehouse;
+    private List<Products> Products_warehouse;
 
     public Warehouse() {
     }
