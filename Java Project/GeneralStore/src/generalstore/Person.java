@@ -8,6 +8,6 @@ package generalstore;
  *
  * @author Matthijs
  */
-public class Person {
+public abstract class Person {
     
 }
