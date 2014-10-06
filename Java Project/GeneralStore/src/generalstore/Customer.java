@@ -6,6 +6,8 @@
 
 package generalstore;
 
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,5 +20,22 @@ public class Customer extends Person{
     
     public Customer(String fName, String lName, int lvl, String race, Boolean gender){
         super(fName, lName, lvl, race, gender);
+        shoppingCart = new ArrayList<>();
+    }
+    
+    public List<Products> getCart(){
+        return this.shoppingCart;
+    }
+    
+    public void setCart(List<Products> newcart){
+        this.shoppingCart = newcart;
+    }
+    
+    public void addToCart(Products p){
+        this.shoppingCart.add(p);
+    }
+    
+    public void removeLast(){
+        this.shoppingCart.remove(shoppingCart.size() - 1);
     }
 }
