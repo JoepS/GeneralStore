@@ -6,11 +6,15 @@
 
 package generalstore;
 
+import java.util.List;
+
 /**
  *
  * @author Fré-Meine
  */
 public class Customer extends Person{
+    
+    public List<Products> shoppingCart;
     
     public Customer(String fName, String lName, int lvl, String race, Boolean gender){
         super(fName, lName, lvl, race, gender);
