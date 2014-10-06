@@ -6,10 +6,16 @@
 
 package generalstore;
 
+import java.util.List;
+
 /**
  *
  * @author Fré-Meine
  */
 public class Department {
+    List<Products> Products_department;
+
+    public Department() {
+    }
     
 }

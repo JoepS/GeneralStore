@@ -4,16 +4,10 @@
  */
 package generalstore;
 
-import java.util.List;
-
 /**
  *
- * @author Joep
+ * @author Matthijs
  */
-public class Warehouse {
-    List<Products> Products_warehouse;
-
-    public Warehouse() {
-    }
+public class Database {
     
 }
