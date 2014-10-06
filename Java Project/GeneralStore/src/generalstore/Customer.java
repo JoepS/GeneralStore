@@ -35,7 +35,9 @@ public class Customer extends Person{
         this.shoppingCart.add(p);
     }
     
-    public void removeLast(){
+    public Products removeLast(){
+        Products temp = shoppingCart.get(shoppingCart.size() -1);
         this.shoppingCart.remove(shoppingCart.size() - 1);
+        return temp;
     }
 }
