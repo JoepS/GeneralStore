@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication3;
+package generalstore;
 
 /**
  *
  * @author Joep
  */
-public class JavaApplication3 {
+public class GeneralStore {
 
     /**
      * @param args the command line arguments
