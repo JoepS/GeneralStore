@@ -39,5 +39,9 @@ public class Customer extends Person{
         Products temp = shoppingCart.get(shoppingCart.size() -1);
         this.shoppingCart.remove(shoppingCart.size() - 1);
         return temp;
+    }   
+    @Override
+    public String toString(){
+        return this.getFirstName() + " " + this.getLastName();
     }
 }
