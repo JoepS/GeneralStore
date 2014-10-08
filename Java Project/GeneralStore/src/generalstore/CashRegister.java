@@ -11,5 +11,6 @@ package generalstore;
  * @author Fré-Meine
  */
 public class CashRegister {
-    
+    private double cash;
+  
 }
