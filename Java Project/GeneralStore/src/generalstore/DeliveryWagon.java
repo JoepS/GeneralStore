@@ -13,7 +13,7 @@ import java.util.List;
  * @author Fré-Meine
  */
 public class DeliveryWagon {
-    List<Products> Products_deliverywagon;
+    private List<Products> Products_deliverywagon;
 
     public DeliveryWagon() {
     }
