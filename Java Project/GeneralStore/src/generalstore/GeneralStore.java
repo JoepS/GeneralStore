@@ -14,6 +14,9 @@ public class GeneralStore {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Employee emp = new Employee(true, true, true, true, null, null, 1, null, Boolean.TRUE);
+        emp.CreateEmployee();
+        
+        
     }
 }
