@@ -9,26 +9,27 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import sun.net.www.content.image.gif;
 
 /**
  *
  * @author Joep
  */
 public class GeneralStore {
+    
+    static ArrayList<Customer> customers;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CreateEmployee();
-        CreateCustomer();
+        customers = new ArrayList<>();
+        GeneralStore gs = new GeneralStore();
+        gs.CreateEmployee();
+        gs.CreateCustomer();
 
     }
 
-    static void CreateCustomer() {
+    public void CreateCustomer() {
         List<String> races = new ArrayList();
         races.add("Orc");
         races.add("Elf");
@@ -37,24 +38,26 @@ public class GeneralStore {
         String randomName = null;
         List<String> words = new ArrayList<String>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("name.txt")); //"/com/generalstore/name.txt"
-            String line = reader.readLine();
-            while (line != null) {
-                String[] wordsLine = line.split(" ");
-                for (String word : wordsLine) {
-                    words.add(word);
-                }
-                line = reader.readLine();
-            }         
+            
+             BufferedReader reader = new BufferedReader(new FileReader("src/name.txt")); //"/com/generalstore/name.txt"
+             String line = reader.readLine();
+             while (line != null) {
+             String[] wordsLine = line.split(" ");
+             for (String word : wordsLine) {
+             words.add(word);
+             }
+             line = reader.readLine();
+             } 
 
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        
+
         Random rand1 = new Random();
-        while(true){
-            randomName = words.get(rand1.nextInt(words.size()-1));
-            Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(rand1.nextInt(races.size()-1)), rand1.nextBoolean());
+        while (true) {
+            randomName = words.get(rand1.nextInt(words.size() - 1));
+            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean());
+            customers.add(cst);
             System.out.println(cst.toString());
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);

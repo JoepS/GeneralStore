@@ -42,6 +42,10 @@ public class Customer extends Person{
     }   
     @Override
     public String toString(){
-        return this.getFirstName() + " " + this.getLastName();
+        String gender = "Female";
+        if(this.getGender()){
+            gender = "Male";
+        }
+        return this.getFirstName() + " " + this.getLevel() + " " + this.getRace() + " " + gender;
     }
 }
