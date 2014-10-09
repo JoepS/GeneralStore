@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import sun.net.www.content.image.gif;
 
 /**
  *
@@ -21,8 +24,6 @@ public class GeneralStore {
      */
     public static void main(String[] args) {
         CreateEmployee();
-        Createproduct();
-        CreateCustomer();
 
     }
 
@@ -33,28 +34,33 @@ public class GeneralStore {
         races.add("Human");
         races.add("Troll");
         String randomName = null;
+        List<String> words = new ArrayList<String>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Words.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("name.txt")); //"/com/generalstore/name.txt"
             String line = reader.readLine();
-            List<String> words = new ArrayList<String>();
             while (line != null) {
                 String[] wordsLine = line.split(" ");
                 for (String word : wordsLine) {
                     words.add(word);
                 }
                 line = reader.readLine();
-            }
-
-            Random rand = new Random(words.size());
-            randomName = words.get(rand.nextInt(words.size()));
+            }         
 
         } catch (Exception e) {
-            // Handle this
+            System.out.println(e.toString());
         }
+        
         Random rand1 = new Random();
-
-        Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(i), rand1.nextBoolean());
-
+        while(true){
+            randomName = words.get(rand1.nextInt(words.size()-1));
+            Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(rand1.nextInt(races.size()-1)), rand1.nextBoolean());
+            System.out.println(cst.toString());
+            try {
+                Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
+            } catch (InterruptedException ex) {
+                //Logger.getLogger(GeneralStore.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 
     static void CreateEmployee() {
