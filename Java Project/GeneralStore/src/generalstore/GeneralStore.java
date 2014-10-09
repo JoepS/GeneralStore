@@ -50,9 +50,9 @@ public class GeneralStore {
             // Handle this
         }
         Random rand1 = new Random();
-        for (int i = 0; i < rand1.nextInt(50); i++) {
-            Customer cst = new Customer(randomName, "", rand1.nextInt(100), "races list", true);
-        }
+
+        Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(i), rand1.nextBoolean());
+
     }
 
     static void CreateEmployee() {
