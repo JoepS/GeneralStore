@@ -75,4 +75,24 @@ public class GeneralStore {
         Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true);
         Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false);
     }
+    
+    static void Createproduct() {
+        //Elixir
+        Products prd1 = new Products("Elixir of Healing", 3.00, 1);
+        //Backpack
+        Products prd2 = new Products("Bottomless Backpack", 34.00, 2);
+        //Gear
+        Products prd3 = new Products("Copper Chain Vest", 8.00, 3);
+        //Weapons
+        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 4);
+        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 5);
+        Products prd6 = new Products("Shadowmourne", 34.00, 6);
+        //Alcohol
+        Products prd7 = new Products("Banana Infused Rum", 5.00, 7);
+        Products prd8 = new Products("Keg of Beer", 22.00, 8);
+        //Food
+        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 9);
+        //Mount
+        Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
+    }
 }
