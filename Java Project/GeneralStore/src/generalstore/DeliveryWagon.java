@@ -18,5 +18,5 @@ public class DeliveryWagon {
     public DeliveryWagon() {
     }
     
+    
 }
-
