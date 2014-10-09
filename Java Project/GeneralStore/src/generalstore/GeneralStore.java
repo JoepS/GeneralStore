@@ -24,7 +24,8 @@ public class GeneralStore {
      */
     public static void main(String[] args) {
         CreateEmployee();
-
+        CreateCustomer();
+        Createproduct();
     }
 
     static void CreateCustomer() {
