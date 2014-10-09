@@ -19,4 +19,9 @@ public class Customer extends Person{
     public Customer(String fName, String lName, int lvl, String race, Boolean gender){
         super(fName, lName, lvl, race, gender);
     }
+    
+    @Override
+    public String toString(){
+        return this.getFirstName() + " " + this.getRace() + " " + this.getLevel();
+    }
 }
