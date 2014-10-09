@@ -4,22 +4,37 @@
  */
 package generalstore;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  *
  * @author Matthijs
  */
+@Entity
+@Table(name = "PRODUCTS")
 public class Products {
 
-    private String productName;
-    private double productPrice;
+    @Id @GeneratedValue
+    @Column(name = "id")
     private int productID;
+    
+    @Column(name = "product_name")
+    private String productName;
+    
+    @Column(name = "product_price")
+    private double productPrice;
+    
 
     public Products(String productName, double productPrice, int productID) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productID = productID;
     }
-    
+
     public String getProductName() {
         return productName;
     }
@@ -28,11 +43,19 @@ public class Products {
         return productPrice;
     }
 
+    public int getProductID() {
+        return productID;
+    }
+
     public void setProductName(String productName) {
         this.productName = productName;
     }
 
     public void setProductPrice(double productPrice) {
         this.productPrice = productPrice;
+    }
+
+    public void setProductID(int productID) {
+        this.productID = productID;
     }
 }
