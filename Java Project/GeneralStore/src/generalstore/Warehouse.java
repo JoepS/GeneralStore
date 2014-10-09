@@ -4,10 +4,16 @@
  */
 package generalstore;
 
+import java.util.List;
+
 /**
  *
  * @author Joep
  */
 public class Warehouse {
+    private List<Products> Products_warehouse;
+
+    public Warehouse() {
+    }
     
 }

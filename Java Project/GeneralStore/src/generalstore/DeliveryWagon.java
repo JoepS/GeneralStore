@@ -6,10 +6,16 @@
 
 package generalstore;
 
+import java.util.List;
+
 /**
  *
  * @author Fré-Meine
  */
 public class DeliveryWagon {
+    private List<Products> Products_deliverywagon;
+
+    public DeliveryWagon() {
+    }
     
 }
