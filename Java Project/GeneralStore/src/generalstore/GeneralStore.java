@@ -25,7 +25,11 @@ public class GeneralStore {
     public static void main(String[] args) {
         CreateEmployee();
         CreateCustomer();
+<<<<<<< HEAD
         Createproduct();
+=======
+
+>>>>>>> 9f923f1b1ddcbe7d5dd6527489885cf7b359a0fa
     }
 
     static void CreateCustomer() {
@@ -72,7 +76,7 @@ public class GeneralStore {
         Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true);
         Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false);
     }
-
+    
     static void Createproduct() {
         //Elixir
         Products prd1 = new Products("Elixir of Healing", 3.00, 1);
