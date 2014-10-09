@@ -46,16 +46,16 @@ public class GeneralStore {
                     words.add(word);
                 }
                 line = reader.readLine();
-            }         
+            }
 
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        
+
         Random rand1 = new Random();
-        while(true){
-            randomName = words.get(rand1.nextInt(words.size()-1));
-            Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(rand1.nextInt(races.size()-1)), rand1.nextBoolean());
+        while (true) {
+            randomName = words.get(rand1.nextInt(words.size() - 1));
+            Customer cst = new Customer(randomName, "", rand1.nextInt(100), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean());
             System.out.println(cst.toString());
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
@@ -101,7 +101,8 @@ public class GeneralStore {
      */
     public static void main(String[] args) {
         CreateEmployee();
-
+        CreateCustomer();
+        Createproduct();
     }
 
     static void CreateCustomer() {
