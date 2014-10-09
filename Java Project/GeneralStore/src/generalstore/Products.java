@@ -8,6 +8,7 @@ package generalstore;
  *
  * @author Matthijs
  */
+
 public class Products {
 
     private String productName;
