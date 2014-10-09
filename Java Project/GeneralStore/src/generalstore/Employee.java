@@ -8,7 +8,7 @@ package generalstore;
  *
  * @author Matthijs
  */
-<<<<<<< HEAD
+
 public class Employee extends Person{
     private Boolean onCashRegister;
     private Boolean refillProducts;
@@ -17,8 +17,12 @@ public class Employee extends Person{
     
     Department department;    
    
-    public Employee(String fName, String lName, int lvl, String race, Boolean gender){
+    public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender){
         super(fName, lName, lvl, race, gender);
+        this.onCashRegister = cashier;
+        this.refillProducts = refill;
+        this.onDepartment = department;
+        this.deliveryWagonDuty = wagonUnloader;
     }
     
     public Boolean getOnCashRegister(){
@@ -57,8 +61,9 @@ public class Employee extends Person{
     public void setDepartement(Department department){
         this.department = department;
     }
+}
     
-=======
+/*
 public class Employee extends Person {
 
     private boolean cashier;
@@ -93,5 +98,9 @@ public class Employee extends Person {
     public void setWagonUnloader(boolean wagonUnloader) {
         this.wagonUnloader = wagonUnloader;
     }
->>>>>>> origin/master
-}
+    
+    public Boolean getWagonUnloader(){
+        return this.wagonUnloader;
+    }
+
+}*/
