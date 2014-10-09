@@ -4,6 +4,12 @@
  */
 package generalstore;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author Joep
@@ -16,8 +22,37 @@ public class GeneralStore {
     public static void main(String[] args) {
         CreateEmployee();
 
+    }
 
+    static void CreateCustomer(String name) {
+        List<String> races = new ArrayList();
+        races.add("Orc");
+        races.add("Elf");
+        races.add("Human");
+        races.add("Troll");
+        String randomName = null;
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("Words.txt"));
+            String line = reader.readLine();
+            List<String> words = new ArrayList<String>();
+            while (line != null) {
+                String[] wordsLine = line.split(" ");
+                for (String word : wordsLine) {
+                    words.add(word);
+                }
+                line = reader.readLine();
+            }
 
+            Random rand = new Random(words.size());
+            randomName = words.get(rand.nextInt(words.size()));
+
+        } catch (Exception e) {
+            // Handle this
+        }
+        Random rand1 = new Random();
+        for (int i = 0; i < rand1.nextInt(50); i++) {
+            Customer cst = new Customer(randomName, "", rand1.nextInt(100), "races list", true);
+        }
     }
 
     static void CreateEmployee() {
