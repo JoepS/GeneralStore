@@ -25,11 +25,7 @@ public class GeneralStore {
     public static void main(String[] args) {
         CreateEmployee();
         CreateCustomer();
-<<<<<<< HEAD
         Createproduct();
-=======
-
->>>>>>> 9f923f1b1ddcbe7d5dd6527489885cf7b359a0fa
     }
 
     static void CreateCustomer() {
