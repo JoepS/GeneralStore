@@ -12,11 +12,14 @@ public class Products {
 
     private String productName;
     private double productPrice;
+    private int productID;
 
-    public Products() {
-
+    public Products(String productName, double productPrice, int productID) {
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.productID = productID;
     }
-
+    
     public String getProductName() {
         return productName;
     }
