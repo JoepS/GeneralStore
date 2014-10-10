@@ -24,23 +24,31 @@ public class Pathway {
         this.productsB = new ArrayList<>();
     }
     
+    public int getMaxAmount(){
+        return maxAmount;
+    }
+    
     public void addProduct(Products p){
-        if(!productsA.isEmpty()){
-            if(productsA.get(0).getProductID() == p.getProductID() && productsA.size() < maxAmount){
-                productsA.add(p);
-            }
-        }
-        else if(productsB.isEmpty()){
+        if(productsA.isEmpty() && productsB.isEmpty()){
             productsA.add(p);
-            return;
         }
-        if(!productsB.isEmpty()){
-            if(productsB.get(0).getProductID() == p.getProductID() && productsA.size() < maxAmount){
+        else if(productsA.isEmpty() && !productsB.isEmpty()){
+            if(productsB.get(0).getProductID() == p.getProductID()){
                 productsB.add(p);
             }
         }
-        else if(productsA.isEmpty()){
-            productsB.add(p);
+        else if(productsB.isEmpty() && !productsA.isEmpty()){
+            if(productsA.get(0).getProductID() == p.getProductID()){
+                productsA.add(p);
+            }
+        }
+        else{
+            if(productsA.get(0).getProductID() == p.getProductID()){
+                productsA.add(p);
+            }
+            else if(productsB.get(0).getProductID() == p.getProductID()){
+                productsB.add(p);
+            }
         }
     }
     
@@ -58,5 +66,19 @@ public class Pathway {
            p = productsB.get(productsB.size()-1);
         }
         return p;
+    }
+    
+    @Override
+    public String toString(){
+        String s = "" + this.id;
+        
+        if(!productsA.isEmpty()){
+            s += " Product 1:" + productsA.get(0).getProductName() + " aantal: " + productsA.size();
+        }
+        if(!productsB.isEmpty()){
+            s += " Product 2:" + productsB.get(0).getProductName() + " aantal: " + productsB.size();
+        }
+        
+        return s;
     }
 }

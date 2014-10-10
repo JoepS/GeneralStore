@@ -16,7 +16,7 @@ import java.util.Random;
  * @author Joep
  */
 public class GeneralStore {
-    
+
     static ArrayList<Customer> customers;
 
     /**
@@ -26,6 +26,7 @@ public class GeneralStore {
         customers = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         gs.CreateEmployee();
+        gs.makePathways();
         gs.CreateCustomer();
 
     }
@@ -39,16 +40,16 @@ public class GeneralStore {
         String randomName = null;
         List<String> words = new ArrayList<String>();
         try {
-            
-             BufferedReader reader = new BufferedReader(new FileReader("src/name.txt")); //"/com/generalstore/name.txt"
-             String line = reader.readLine();
-             while (line != null) {
-             String[] wordsLine = line.split(" ");
-             for (String word : wordsLine) {
-             words.add(word);
-             }
-             line = reader.readLine();
-             } 
+
+            BufferedReader reader = new BufferedReader(new FileReader("src/name.txt")); //"/com/generalstore/name.txt"
+            String line = reader.readLine();
+            while (line != null) {
+                String[] wordsLine = line.split(" ");
+                for (String word : wordsLine) {
+                    words.add(word);
+                }
+                line = reader.readLine();
+            }
 
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -76,7 +77,7 @@ public class GeneralStore {
         Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true);
         Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false);
     }
-    
+
     static void Createproduct() {
         //Elixir
         Products prd1 = new Products("Elixir of Healing", 3.00, 1);
@@ -95,5 +96,16 @@ public class GeneralStore {
         Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 9);
         //Mount
         Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
+    }
+
+    public void makePathways() {
+        for (int i = 0; i < 5; i++) {
+            Pathway p = new Pathway(i);
+            for (int x = 0; x < p.getMaxAmount(); x++) {
+                p.addProduct(new Products("Banana Infused Rum", 5.00, 7));
+                p.addProduct(new Products("Keg of Beer", 22.00, 8));
+            }
+            System.out.println(p.toString());
+        }
     }
 }
