@@ -26,8 +26,10 @@ public class GeneralStore {
         customers = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         gs.CreateEmployee();
-        gs.makePathways();
+        gs.createPatways();
+        gs.createDepartements();
         gs.CreateCustomer();
+        
 
     }
 
@@ -98,14 +100,28 @@ public class GeneralStore {
         Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
     }
 
-    public void makePathways() {
+    public void createPatways() {
         for (int i = 0; i < 5; i++) {
             Pathway p = new Pathway(i);
+            //Random r = new Random();
+            //int productA = r.nextInt(products.size());
+            //int prodcutB = r.nextInt(products.size());
             for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(new Products("Banana Infused Rum", 5.00, 7));
-                p.addProductB(new Products("Keg of Beer", 22.00, 8));
+                p.addProductA(new Products("Banana Infused Rum", 5.00, 7)); //p.addProductA(products.get(productA);
+                p.addProductB(new Products("Keg of Beer", 22.00, 8));//p.addProductB(products.get(productB);
             }
             System.out.println(p.toString());
+        }
+    }
+    
+    public void createDepartements(){
+        for(int i = 0; i < 5; i++){
+            Department d = new Department(i);
+            for(int x = 0; x < d.getMaxAmount(); x++){
+                d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            }
+            System.out.println(d.toString());
+                    
         }
     }
 }
