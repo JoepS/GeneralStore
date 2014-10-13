@@ -28,6 +28,18 @@ public class Pathway {
         return maxAmount;
     }
     
+    public void addProductA(Products p){
+        if(productsA.size() < maxAmount){
+            productsA.add(p);
+        }
+    }
+    
+    public void addProductB(Products p){
+        if(productsB.size() < maxAmount){
+            productsB.add(p);
+        }
+    }
+    
     public void addProduct(Products p){
         if(productsA.isEmpty() && productsB.isEmpty()){
             productsA.add(p);

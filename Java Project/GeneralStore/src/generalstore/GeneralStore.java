@@ -102,8 +102,8 @@ public class GeneralStore {
         for (int i = 0; i < 5; i++) {
             Pathway p = new Pathway(i);
             for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProduct(new Products("Banana Infused Rum", 5.00, 7));
-                p.addProduct(new Products("Keg of Beer", 22.00, 8));
+                p.addProductA(new Products("Banana Infused Rum", 5.00, 7));
+                p.addProductB(new Products("Keg of Beer", 22.00, 8));
             }
             System.out.println(p.toString());
         }
