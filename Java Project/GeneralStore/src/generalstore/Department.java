@@ -51,6 +51,9 @@ public class Department {
     
     public String toString(){
         String s = this.id + "";
+        if(currentEmployee != null){
+           s += " Employee: " + currentEmployee.getFirstName();
+        }
         if(!products.isEmpty()){
             s += " Product " + products.get(0).getProductName() + " aantal: " + products.size();
         }

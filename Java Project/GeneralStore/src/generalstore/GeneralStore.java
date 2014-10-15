@@ -118,6 +118,7 @@ public class GeneralStore {
         for(int i = 0; i < 5; i++){
             Department d = new Department(i);
             for(int x = 0; x < d.getMaxAmount(); x++){
+                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false));
                 d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
             }
             System.out.println(d.toString());
