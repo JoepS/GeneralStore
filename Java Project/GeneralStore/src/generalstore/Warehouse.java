@@ -14,12 +14,21 @@ import org.hibernate.Transaction;
  * @author Joep
  */
 public class Warehouse {
-    
+
     private static SessionFactory factory;
     private List<Products> Products_warehouse;
+    private int maxAmount = 999999;
 
     public Warehouse() {
-        int derp;
+
+    }
+
+    public void addProduct(Products p) {
+        Products_warehouse.add(p);
+    }
+
+    public int getMaxAmount() {
+        return maxAmount;
     }
     
     //Create database session
