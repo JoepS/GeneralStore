@@ -57,4 +57,14 @@ public abstract class Person {
     public void setGender(Boolean gender){
         this.gender = gender;
     }
+    
+    public void currentLocation(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+    
+    public void destination(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
 }
