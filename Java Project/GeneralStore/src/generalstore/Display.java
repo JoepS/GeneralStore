@@ -21,7 +21,7 @@ public class Display {
     private JFrame frame;
     
     int[][] map = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                   {0,2,2,2,2,2,3,3,3,3,3,3,1,1,0,0,1,4,1,4,1,4,3,3,3,0},
+                   {0,2,2,2,2,2,3,3,3,3,3,3,5,5,0,0,1,4,1,4,1,4,3,3,3,0},
                    {0,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,0},
                    {0,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,0},
                    {0,2,2,2,2,2,1,1,1,1,1,1,2,2,2,2,2,2,1,1,1,1,1,1,3,0},
@@ -93,6 +93,9 @@ public class Display {
                     l.setBorder(BorderFactory.createLineBorder(Color.black));
                     l.setText("Kassa");
                 }
+                else if(map[y][x] == 5){
+                    l.setBackground(Color.white);
+                }
                 else {
                     Random rand = new Random();
                     float r = rand.nextFloat();
@@ -107,5 +110,9 @@ public class Display {
         }
         frame.setResizable(false);
         frame.repaint();
+    }
+    
+    public JFrame getFrame(){
+        return frame;
     }
 }
