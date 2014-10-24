@@ -14,26 +14,15 @@ import org.hibernate.Transaction;
  * @author Joep
  */
 public class Warehouse {
-<<<<<<< HEAD
-=======
     private static SessionFactory factory; 
->>>>>>> 0529121c880deb0997ec373c3fe840cb3807fb07
     private List<Products> Products_warehouse;
 
     public Warehouse() {
     }
-<<<<<<< HEAD
-    
-    
-    
-    
-    
-    
-    
-=======
+
 
     //Create database session
-    public void createSession() {
+    /*public void createSession() {
 
         Session session = factory.openSession();
         Transaction tx = session.beginTransaction();
@@ -42,10 +31,9 @@ public class Warehouse {
         myObject.setText("Changed Text");
         MyClass myNewObject = new MyClass(
         “new”, 42.4);
-myObject.setNext(myNewObject);
+        myObject.setNext(myNewObject);
         tx.commit();
         session.close();
 
-    }
->>>>>>> 0529121c880deb0997ec373c3fe840cb3807fb07
+    }*/
 }

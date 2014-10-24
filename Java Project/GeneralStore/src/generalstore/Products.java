@@ -59,14 +59,11 @@ public class Products {
     public void setProductID(int productID) {
         this.productID = productID;
     }
-<<<<<<< HEAD
-=======
-    
+    /*
     create table PRODUCTS (
         product_id INT NOT NULL auto_increment,
         product_name VARCHAR(50) default NULL,
         product_price  VARCHAR(50) default NULL,
         PRIMARY KEY (id)
-    );
->>>>>>> 0529121c880deb0997ec373c3fe840cb3807fb07
+    );*/
 }
