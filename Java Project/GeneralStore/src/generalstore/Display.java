@@ -66,9 +66,10 @@ public class Display {
         GridLayout gl = new GridLayout();
         gl.setRows(26);
         gl.setColumns(26);
-        frame.setLayout(gl);
+        //frame.setLayout(gl);
         
         JPanel panel = new JPanel();
+        panel.setLayout(gl);
 
         for (int y = 0; y < gl.getColumns(); y++) {
             for (int x = 0; x < gl.getRows(); x++) {
@@ -106,7 +107,7 @@ public class Display {
                     float g = rand.nextFloat();
                     float b = rand.nextFloat();
                     l.setBackground(new Color(r, g, b));
-                }   
+                }  
                 l.setOpaque(true);
                 l.setName(x + "," + y);
                 panel.add(l);
