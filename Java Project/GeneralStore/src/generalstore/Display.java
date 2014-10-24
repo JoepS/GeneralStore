@@ -7,10 +7,12 @@ package generalstore;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Panel;
 import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -65,6 +67,8 @@ public class Display {
         gl.setRows(26);
         gl.setColumns(26);
         frame.setLayout(gl);
+        
+        JPanel panel = new JPanel();
 
         for (int y = 0; y < gl.getColumns(); y++) {
             for (int x = 0; x < gl.getRows(); x++) {
@@ -105,9 +109,11 @@ public class Display {
                 }   
                 l.setOpaque(true);
                 l.setName(x + "," + y);
-                frame.add(l);
+                panel.add(l);
             }
         }
+        
+        frame.add(panel);
         frame.setResizable(false);
         frame.repaint();
     }
