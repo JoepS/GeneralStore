@@ -42,12 +42,13 @@ public class GeneralStore {
         departments = new ArrayList<>();
         pathways = new ArrayList<>();
         warehouse = new ArrayList<>();
-        GeneralStore gs = new GeneralStore();
+        GeneralStore gs = new GeneralStore(); 
         gs.Createproduct();
+               
+        gs.createWareHouse();
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
-        gs.createWareHouse();
         gs.CreateCustomer();
     }
 
