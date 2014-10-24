@@ -31,6 +31,10 @@ public class Warehouse {
         return maxAmount;
     }
     
+    
+    
+    
+    
     //Create database session
 //    public void createSession() {
 //
@@ -46,4 +50,13 @@ public class Warehouse {
 //        session.close();
 //
 //    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        if(!Products_warehouse.isEmpty()){
+            s += " Warehouse Products: " + Products_warehouse.get(0).getProductName() + " aantal: " + Products_warehouse.size();
+        }
+        return s;
+    }
 }
