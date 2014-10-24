@@ -42,10 +42,14 @@ public class GeneralStore {
         departments = new ArrayList<>();
         pathways = new ArrayList<>();
         warehouse = new ArrayList<>();
-        GeneralStore gs = new GeneralStore(); 
+
+        GeneralStore gs = new GeneralStore();
+
         gs.Createproduct();
-               
         gs.createWareHouse();
+
+        
+        
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
@@ -179,13 +183,15 @@ public class GeneralStore {
     }
 
     public void createWareHouse() {
+        Warehouse w = new Warehouse();
         for (int i = 0; i < products.size(); i++) {
-            Warehouse w = new Warehouse();
+            
             for (int j = 0; j < w.getMaxAmount(); j++) {
                 w.addProduct(products.get(i));
             }
             warehouse.add(w);
             System.out.println(warehouse.get(i));
         }
+        w.addProducts();
     }
 }
