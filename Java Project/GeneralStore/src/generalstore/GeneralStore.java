@@ -45,6 +45,7 @@ public class GeneralStore {
         gs.createPatways();
         gs.createDepartements();
         gs.CreateCustomer();
+        gs.createWareHouse();
 
     }
 
@@ -174,7 +175,7 @@ public class GeneralStore {
         }
     }
 
-    public void createwarehouse() {
+    public void createWareHouse() {
         Warehouse w = new Warehouse();
         for (int i = 0; i < products.size(); i++) {
             for (int j = 0; j < w.getMaxAmount(); j++) {
