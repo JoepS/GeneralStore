@@ -18,22 +18,29 @@ import java.util.Random;
 public class GeneralStore {
 
     static ArrayList<Customer> customers;
+    static ArrayList<Employee> employees;
+    static ArrayList<Products> products;
+    static ArrayList<Department> departments;
+    static ArrayList<Pathway> pathways;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         Display display = new Display();
         display.makeFrame();
-        
+
         customers = new ArrayList<>();
+        employees = new ArrayList<>();
+        products = new ArrayList<>();
+        departments = new ArrayList<>();
+        pathways = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
         gs.CreateCustomer();
-        
 
     }
 
@@ -65,8 +72,10 @@ public class GeneralStore {
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
             Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean());
-            customers.add(cst);
-            System.out.println(cst.toString());
+            if (customers.size() < 50) {
+                customers.add(cst);
+                System.out.println(customers.size() + " " + cst.toString());
+            }
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
             } catch (InterruptedException ex) {
@@ -77,31 +86,47 @@ public class GeneralStore {
 
     static void CreateEmployee() {
         Employee emp1 = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true);
+        employees.add(emp1);
         Employee emp2 = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false);
+        employees.add(emp2);
         Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true);
+        employees.add(emp3);
         Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true);
+        employees.add(emp4);
         Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true);
+        employees.add(emp5);
         Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false);
+        employees.add(emp6);
     }
 
     static void Createproduct() {
         //Elixir
         Products prd1 = new Products("Elixir of Healing", 3.00, 1);
+        products.add(prd1);
         //Backpack
         Products prd2 = new Products("Bottomless Backpack", 34.00, 2);
+        products.add(prd2);
         //Gear
         Products prd3 = new Products("Copper Chain Vest", 8.00, 3);
+        products.add(prd3);
         //Weapons
         Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 4);
+        products.add(prd4);
         Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 5);
+        products.add(prd5);
         Products prd6 = new Products("Shadowmourne", 34.00, 6);
+        products.add(prd6);
         //Alcohol
         Products prd7 = new Products("Banana Infused Rum", 5.00, 7);
+        products.add(prd7);
         Products prd8 = new Products("Keg of Beer", 22.00, 8);
+        products.add(prd8);
         //Food
         Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 9);
+        products.add(prd9);
         //Mount
         Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
+        products.add(prd10);
     }
 
     public void createPatways() {
@@ -115,18 +140,20 @@ public class GeneralStore {
                 p.addProductB(new Products("Keg of Beer", 22.00, 8));//p.addProductB(products.get(productB);
             }
             System.out.println(p.toString());
+            pathways.add(p);
         }
     }
-    
-    public void createDepartements(){
-        for(int i = 0; i < 5; i++){
+
+    public void createDepartements() {
+        for (int i = 0; i < 5; i++) {
             Department d = new Department(i);
-            for(int x = 0; x < d.getMaxAmount(); x++){
+            for (int x = 0; x < d.getMaxAmount(); x++) {
                 d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false));
                 d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
             }
             System.out.println(d.toString());
-                    
+            departments.add(d);
+
         }
     }
 }

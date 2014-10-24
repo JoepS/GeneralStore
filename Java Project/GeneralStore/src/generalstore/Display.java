@@ -58,7 +58,7 @@ public class Display {
     public void makeFrame() {
         frame = new JFrame();
         frame.pack();
-        frame.setSize(500, 500);
+        frame.setSize(1366, 768);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout gl = new GridLayout();
@@ -91,6 +91,7 @@ public class Display {
                     //Kassa
                     l.setBackground(Color.pink);                    
                     l.setBorder(BorderFactory.createLineBorder(Color.black));
+                    l.setText("Kassa");
                 }
                 else {
                     Random rand = new Random();
