@@ -4,10 +4,8 @@
  */
 package generalstore;
 
-import java.util.List;
-import org.hibernate.Session;
+import java.util.ArrayList;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -16,11 +14,11 @@ import org.hibernate.Transaction;
 public class Warehouse {
 
     private static SessionFactory factory;
-    private List<Products> Products_warehouse;
+    private ArrayList<Products> Products_warehouse;
     private int maxAmount = 999999;
 
     public Warehouse() {
-
+           Products_warehouse = new ArrayList<>();
     }
 
     public void addProduct(Products p) {
@@ -30,6 +28,10 @@ public class Warehouse {
     public int getMaxAmount() {
         return maxAmount;
     }
+    
+    
+    
+    
     
     //Create database session
 //    public void createSession() {
@@ -46,4 +48,13 @@ public class Warehouse {
 //        session.close();
 //
 //    }
+
+    @Override
+    public String toString() {
+        String s = "";
+        if(!Products_warehouse.isEmpty()){
+            s += " Warehouse Products: " + Products_warehouse.get(0).getProductName() + " aantal: " + Products_warehouse.size();
+        }
+        return s;
+    }
 }

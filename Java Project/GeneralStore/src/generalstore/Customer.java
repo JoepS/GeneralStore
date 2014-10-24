@@ -48,7 +48,7 @@ public class Customer extends Person{
         return temp;
     }   
     
-        public void createShoppingList(ArrayList<Products> products) {
+    public void createShoppingList(ArrayList<Products> products) {
         Random ran = new Random();
         double totalCash = cash;
         double cashLeft = 0;

@@ -24,6 +24,7 @@ public class GeneralStore {
     static ArrayList<Products> products;
     static ArrayList<Department> departments;
     static ArrayList<Pathway> pathways;
+    static ArrayList<Warehouse> warehouse;
 
     static Display display;
 
@@ -40,12 +41,15 @@ public class GeneralStore {
         products = new ArrayList<>();
         departments = new ArrayList<>();
         pathways = new ArrayList<>();
-        GeneralStore gs = new GeneralStore();
+        warehouse = new ArrayList<>();
+        GeneralStore gs = new GeneralStore(); 
+        gs.Createproduct();
+               
+        gs.createWareHouse();
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
         gs.CreateCustomer();
-
     }
 
     public void CreateCustomer() {
@@ -89,13 +93,13 @@ public class GeneralStore {
         }
     }
 
-    public void changeLabel(int x, int y, String text){        
+    public void changeLabel(int x, int y, String text) {
         Component[] comp = display.getFrame().getContentPane().getComponents();
-        JPanel panel = (JPanel)comp[0];
+        JPanel panel = (JPanel) comp[0];
         comp = panel.getComponents();
         for (int i = 0; i < comp.length; i++) {
-            if(comp[i].getName().equals(x+","+y)){
-                JLabel l = (JLabel)comp[i];
+            if (comp[i].getName().equals(x + "," + y)) {
+                JLabel l = (JLabel) comp[i];
                 l.setText(text);
             }
         }
@@ -174,13 +178,14 @@ public class GeneralStore {
         }
     }
 
-    public void createwarehouse() {
-        Warehouse w = new Warehouse();
+    public void createWareHouse() {
         for (int i = 0; i < products.size(); i++) {
+            Warehouse w = new Warehouse();
             for (int j = 0; j < w.getMaxAmount(); j++) {
                 w.addProduct(products.get(i));
             }
-            System.out.println(w.toString());
+            warehouse.add(w);
+            System.out.println(warehouse.get(i));
         }
     }
 }
