@@ -21,16 +21,10 @@ public class Customer extends Person{
     //List of what the customer wants to buy
     public List<Products> shoppingList;
     
-<<<<<<< HEAD
-    public Customer(String fName, String lName, int lvl, String race, Boolean gender, int x, int y){
-        super(fName, lName, lvl, race, gender, x, y);
-=======
     double cash;
-    
-    public Customer(String fName, String lName, int lvl, String race, Boolean gender, double cash){
-        
-        super(fName, lName, lvl, race, gender);
->>>>>>> dc8508aa7889fb661698eec0da79696094ce104f
+
+    public Customer(String fName, String lName, int lvl, String race, Boolean gender, int x, int y, double cash){
+        super(fName, lName, lvl, race, gender, x, y);
         shoppingCart = new ArrayList<>();
         shoppingList = new ArrayList<>();
         this.cash = cash;

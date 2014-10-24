@@ -59,14 +59,13 @@ public abstract class Person {
     public void setGender(Boolean gender){
         this.gender = gender;
     }
-    
-<<<<<<< HEAD
+
     public int getX(){
         return x;
     }
     public int getY(){
         return y;
-=======
+    }
     public void currentLocation(int x, int y){
         this.x = x;
         this.y = y;
@@ -75,6 +74,5 @@ public abstract class Person {
     public void destination(int x, int y){
         this.x = x;
         this.y = y;
->>>>>>> dc8508aa7889fb661698eec0da79696094ce104f
     }
 }
