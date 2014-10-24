@@ -17,12 +17,14 @@ public abstract class Person {
     
     private int x,y;
     
-    public Person(String fName, String lName, int lvl, String race, Boolean gender){
+    public Person(String fName, String lName, int lvl, String race, Boolean gender, int x, int y){
         this.firstName = fName;
         this.lastName = lName;
         this.level = lvl;
         this.race = race;
         this.gender = gender;
+        this.x = x;
+        this.y = y;
     }
     
     //Getters of person
@@ -56,5 +58,12 @@ public abstract class Person {
     }
     public void setGender(Boolean gender){
         this.gender = gender;
+    }
+    
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
     }
 }

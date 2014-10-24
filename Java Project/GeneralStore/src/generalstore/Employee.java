@@ -17,8 +17,8 @@ public class Employee extends Person{
     
     Department department;    
    
-    public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender){
-        super(fName, lName, lvl, race, gender);
+    public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender, int x, int y){
+        super(fName, lName, lvl, race, gender, x, y);
         this.onCashRegister = cashier;
         this.refillProducts = refill;
         this.onDepartment = department;

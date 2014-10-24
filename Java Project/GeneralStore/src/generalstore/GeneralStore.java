@@ -5,11 +5,13 @@
  */
 package generalstore;
 
+import java.awt.Component;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JLabel;
 
 /**
  *
@@ -22,13 +24,15 @@ public class GeneralStore {
     static ArrayList<Products> products;
     static ArrayList<Department> departments;
     static ArrayList<Pathway> pathways;
+    
+    static Display display;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        Display display = new Display();
+        display = new Display();
         display.makeFrame();
 
         customers = new ArrayList<>();
@@ -71,10 +75,11 @@ public class GeneralStore {
         Random rand1 = new Random();
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
-            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean());
+            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1);
             if (customers.size() < 50) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
+                changeLabel(cst.getX(), cst.getY(), "O");
             }
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
@@ -83,19 +88,30 @@ public class GeneralStore {
             }
         }
     }
+    
+    public void changeLabel(int x, int y, String text){        
+        Component[] components = display.getFrame().getComponents();
+        
+        for (int i = 0; i < components.length; i++) {
+            if(components[i].getName().equals(x + "," + y)){
+                JLabel label = (JLabel)components[i];
+                label.setText(text);
+            }
+        }
+    }
 
     static void CreateEmployee() {
-        Employee emp1 = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true);
+        Employee emp1 = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0);
         employees.add(emp1);
-        Employee emp2 = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false);
+        Employee emp2 = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
         employees.add(emp2);
-        Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true);
+        Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true,0,0);
         employees.add(emp3);
-        Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true);
+        Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true,0,0);
         employees.add(emp4);
-        Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true);
+        Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true,0,0);
         employees.add(emp5);
-        Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false);
+        Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false,0,0);
         employees.add(emp6);
     }
 
@@ -148,7 +164,7 @@ public class GeneralStore {
         for (int i = 0; i < 5; i++) {
             Department d = new Department(i);
             for (int x = 0; x < d.getMaxAmount(); x++) {
-                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false));
+                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false,0,0));
                 d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
             }
             System.out.println(d.toString());

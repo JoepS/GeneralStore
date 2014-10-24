@@ -18,8 +18,8 @@ public class Customer extends Person{
     
     public List<Products> shoppingCart;
     
-    public Customer(String fName, String lName, int lvl, String race, Boolean gender){
-        super(fName, lName, lvl, race, gender);
+    public Customer(String fName, String lName, int lvl, String race, Boolean gender, int x, int y){
+        super(fName, lName, lvl, race, gender, x, y);
         shoppingCart = new ArrayList<>();
     }
     
