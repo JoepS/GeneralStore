@@ -15,6 +15,8 @@ public abstract class Person {
     private String race;
     private Boolean gender; //True = male; False = female;
     
+    private int x,y;
+    
     public Person(String fName, String lName, int lvl, String race, Boolean gender){
         this.firstName = fName;
         this.lastName = lName;
