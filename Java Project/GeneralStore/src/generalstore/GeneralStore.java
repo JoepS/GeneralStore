@@ -71,7 +71,7 @@ public class GeneralStore {
         Random rand1 = new Random();
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
-            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean());
+            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), rand1.nextInt(200 - 50) + 50);
             if (customers.size() < 50) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
