@@ -66,6 +66,7 @@ public abstract class Person {
     public int getY(){
         return y;
     }
+    
     public void currentLocation(int x, int y){
         this.x = x;
         this.y = y;
