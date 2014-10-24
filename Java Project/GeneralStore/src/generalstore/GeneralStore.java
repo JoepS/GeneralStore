@@ -25,6 +25,7 @@ public class GeneralStore {
     static ArrayList<Department> departments;
     static ArrayList<Pathway> pathways;
     static ArrayList<Warehouse> warehouse;
+    static ArrayList<CashRegister> casregisters;
 
     static Display display;
 
@@ -42,9 +43,10 @@ public class GeneralStore {
         departments = new ArrayList<>();
         pathways = new ArrayList<>();
         warehouse = new ArrayList<>();
+        casregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore(); 
         gs.Createproduct();
-               
+        gs.createCashRegister();
         gs.createWareHouse();
         gs.CreateEmployee();
         gs.createPatways();
@@ -85,7 +87,7 @@ public class GeneralStore {
             Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1, rand1.nextInt(200 - 50) + 50);
             if (customers.size() < 1000) {
                 customers.add(cst);
-                System.out.println(customers.size() + " " + cst.toString());
+                //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
             }
             try {
@@ -228,7 +230,12 @@ public class GeneralStore {
     }
     
     public void createCashRegister(){
-        CashRegister c = new CashRegister();
+        CashRegister c = new CashRegister(0, true, 16, 1);
+        casregisters.add(c);
+        c = new CashRegister(0, true, 18, 1);
+        casregisters.add(c);        
+        c = new CashRegister(0, true, 20, 1);
+        casregisters.add(c);
     }
 
     public void createWareHouse() {

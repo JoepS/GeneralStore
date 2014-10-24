@@ -27,6 +27,8 @@ public class Customer extends Person {
 
     double cash;
 
+    boolean updatable = true;
+
     public Customer(String fName, String lName, int lvl, String race, Boolean gender, int x, int y, double cash) {
         super(fName, lName, lvl, race, gender, x, y);
         shoppingCart = new ArrayList<>();
@@ -58,7 +60,9 @@ public class Customer extends Person {
         double totalCash = cash;
         double cashLeft = 0;
 
-        for (int i = 0; i < ran.nextInt(15); i++) {
+        int num = ran.nextInt(14) + 1;
+
+        for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
                     shoppingList.add(products.get(ran.nextInt(10)));
@@ -78,38 +82,63 @@ public class Customer extends Person {
     }
 
     public void update(ArrayList<Pathway> pathways) {
-        for (int i = 0; i < shoppingList.size(); i++) {
-            if (!shoppingCart.contains(shoppingList.get(i))) {
-                for (int j = 0; j < pathways.size(); j++) {
-                    if (pathways.get(j).getProductA().getProductID() == shoppingList.get(i).getProductID()) {
-                        changeLabel(this.getX(), this.getY(), "");
-                        this.destination(pathways.get(j).getX(), pathways.get(j).getY());
-                        try {
-                            Thread.sleep(00);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+        if (updatable) {
+            for (int i = 0; i < shoppingList.size(); i++) {
+                if (!shoppingCart.contains(shoppingList.get(i))) {
+                    for (int j = 0; j < pathways.size(); j++) {
+                        if (pathways.get(j).getProductA().getProductID() == shoppingList.get(i).getProductID()) {
+                            changeLabel(this.getX(), this.getY(), "");
+                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            try {
+                                Thread.sleep(00);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            changeLabel(this.getX(), this.getY(), this.getFirstName());
+                            this.shoppingCart.add(pathways.get(j).removeProductA());
+                            this.shoppingList.remove(shoppingList.get(i));
+                            return;
+                        } else if (pathways.get(j).getProductB().getProductID() == shoppingList.get(i).getProductID()) {
+                            changeLabel(this.getX(), this.getY(), "");
+                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            try {
+                                Thread.sleep(00);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            changeLabel(this.getX(), this.getY(), this.getFirstName());
+                            this.shoppingCart.add(pathways.get(j).removeProductB());
+                            this.shoppingList.remove(shoppingList.get(i));
+                            return;
                         }
-                        changeLabel(this.getX(), this.getY(), this.getFirstName());
-                        this.shoppingCart.add(pathways.get(j).removeProductA());
-                        this.shoppingList.remove(shoppingList.get(i));
-                        return;
-                    } else if (pathways.get(j).getProductB().getProductID() == shoppingList.get(i).getProductID()) {
-                        changeLabel(this.getX(), this.getY(), "");
-                        this.destination(pathways.get(j).getX(), pathways.get(j).getY());
-                        try {
-                            Thread.sleep(00);
-                        } catch (InterruptedException ex) {
-                            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                        changeLabel(this.getX(), this.getY(), this.getFirstName());
-                        this.shoppingCart.add(pathways.get(j).removeProductB());                        
-                        this.shoppingList.remove(shoppingList.get(i));
-                        return;
                     }
                 }
             }
+            if (shoppingList.isEmpty()) {
+                System.out.println(this.getFirstName() + "is done shopping");
+                
+                changeLabel(this.getX(), this.getY(), "");
+                Random r = new Random();
+                CashRegister cr = GeneralStore.casregisters.get(r.nextInt(2));
+                this.destination(cr.getX(), cr.getY());
+                changeLabel(this.getX(), this.getY(), this.getFirstName());
+                cr.goldStorage(cr.calculatePrice(this.shoppingCart));
+                System.out.println(cr.toString());
+                try {
+                    this.finalize();
+                } catch (Throwable ex) {
+                    Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                this.updatable = false;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                changeLabel(this.getX(), this.getY(), "");
+            }
         }
-        System.out.println(this.getFirstName() + "is done shopping");
     }
 
     public void changeLabel(int x, int y, String text) {
