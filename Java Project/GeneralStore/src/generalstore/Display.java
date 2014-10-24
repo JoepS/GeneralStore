@@ -68,9 +68,15 @@ public class Display {
         gl.setRows(26);
         gl.setColumns(26);
         //frame.setLayout(gl);
+<<<<<<< HEAD
 
         JPanel panel = new JPanel();
         panel.setLayout(gl);
+=======
+        JPanel panel = new JPanel();
+        panel.setLayout(gl);
+
+>>>>>>> 05e5ef7d6eeef9f4861e0fa0be1d8bc3f4349c46
         for (int y = 0; y < gl.getColumns(); y++) {
             for (int x = 0; x < gl.getRows(); x++) {
                 JLabel l = new JLabel();
@@ -101,7 +107,8 @@ public class Display {
                     float g = rand.nextFloat();
                     float b = rand.nextFloat();
                     l.setBackground(new Color(r, g, b));
-                }
+                }  
+                
                 l.setOpaque(true);
                 l.setName(x + "," + y);
                 panel.add(l);
