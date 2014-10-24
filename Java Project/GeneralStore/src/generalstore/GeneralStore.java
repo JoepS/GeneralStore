@@ -23,7 +23,7 @@ public class GeneralStore {
     static ArrayList<Products> products;
     static ArrayList<Department> departments;
     static ArrayList<Pathway> pathways;
-    
+
     static Display display;
 
     /**
@@ -74,7 +74,7 @@ public class GeneralStore {
         Random rand1 = new Random();
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
-            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1, rand1.nextInt(200-50) + 50);
+            Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1, rand1.nextInt(200 - 50) + 50);
             if (customers.size() < 50) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
@@ -87,13 +87,13 @@ public class GeneralStore {
             }
         }
     }
-    
-    public void changeLabel(int x, int y, String text){        
+
+    public void changeLabel(int x, int y, String text) {
         Component[] components = display.getFrame().getComponents();
-        
+
         for (int i = 0; i < components.length; i++) {
-            if(components[i].getName().equals(x + "," + y)){
-                JLabel label = (JLabel)components[i];
+            if (components[i].getName().equals(x + "," + y)) {
+                JLabel label = (JLabel) components[i];
                 label.setText(text);
             }
         }
@@ -104,13 +104,13 @@ public class GeneralStore {
         employees.add(emp1);
         Employee emp2 = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
         employees.add(emp2);
-        Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true,0,0);
+        Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0);
         employees.add(emp3);
-        Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true,0,0);
+        Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0);
         employees.add(emp4);
-        Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true,0,0);
+        Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0);
         employees.add(emp5);
-        Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false,0,0);
+        Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0);
         employees.add(emp6);
     }
 
@@ -163,12 +163,22 @@ public class GeneralStore {
         for (int i = 0; i < 5; i++) {
             Department d = new Department(i);
             for (int x = 0; x < d.getMaxAmount(); x++) {
-                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false,0,0));
+                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0));
                 d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
             }
             System.out.println(d.toString());
             departments.add(d);
 
+        }
+    }
+
+    public void createwarehouse() {
+        Warehouse w = new Warehouse();
+        for (int i = 0; i < products.size(); i++) {
+            for (int j = 0; j < w.getMaxAmount(); j++) {
+                w.addProduct(products.get(i));
+            }
+            System.out.println(w.toString());
         }
     }
 }
