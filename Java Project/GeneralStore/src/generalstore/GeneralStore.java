@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -78,7 +79,7 @@ public class GeneralStore {
             if (customers.size() < 50) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
-                //changeLabel(cst.getX(), cst.getY(), "O");
+                changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
             }
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
@@ -88,13 +89,14 @@ public class GeneralStore {
         }
     }
 
-    public void changeLabel(int x, int y, String text) {
-        Component[] components = display.getFrame().getComponents();
-
-        for (int i = 0; i < components.length; i++) {
-            if (components[i].getName().equals(x + "," + y)) {
-                JLabel label = (JLabel) components[i];
-                label.setText(text);
+    public void changeLabel(int x, int y, String text){        
+        Component[] comp = display.getFrame().getContentPane().getComponents();
+        JPanel panel = (JPanel)comp[0];
+        comp = panel.getComponents();
+        for (int i = 0; i < comp.length; i++) {
+            if(comp[i].getName().equals(x+","+y)){
+                JLabel l = (JLabel)comp[i];
+                l.setText(text);
             }
         }
     }
