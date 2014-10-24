@@ -23,6 +23,10 @@ public class GeneralStore {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        Display display = new Display();
+        display.makeFrame();
+        
         customers = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         gs.CreateEmployee();
