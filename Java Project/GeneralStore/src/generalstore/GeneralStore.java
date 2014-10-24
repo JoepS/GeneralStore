@@ -78,7 +78,7 @@ public class GeneralStore {
             if (customers.size() < 50) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
-                changeLabel(cst.getX(), cst.getY(), "O");
+                //changeLabel(cst.getX(), cst.getY(), "O");
             }
             try {
                 Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
