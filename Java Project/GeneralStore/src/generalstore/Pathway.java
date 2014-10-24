@@ -18,10 +18,14 @@ public class Pathway {
     private ArrayList<Products> productsB;
     private int maxAmount = 50;
     
-    public Pathway(int id){
+    private int x, y;
+    
+    public Pathway(int id, int x, int y){
         this.id = id;
         this.productsA = new ArrayList<>();
         this.productsB = new ArrayList<>();
+        this.x = x;
+        this.y = y;
     }
     
     public int getMaxAmount(){
@@ -92,5 +96,25 @@ public class Pathway {
         }
         
         return s;
+    }
+    
+    public Products removeProductA(){
+        Products a = productsA.get(productsA.size()-1);
+        productsA.remove(productsA.size()-1);
+        return a;        
+    }
+    
+    public Products removeProductB(){
+        Products b = productsB.get(productsB.size()-1);
+        productsB.remove(productsB.size()-1);
+        return b;        
+    }
+    
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
     }
 }

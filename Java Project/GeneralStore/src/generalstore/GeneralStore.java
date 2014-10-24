@@ -75,18 +75,21 @@ public class GeneralStore {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
+        
+        Thread t = new Thread(new ControlCustomers(customers));
+        t.start();
 
         Random rand1 = new Random();
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
             Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1, rand1.nextInt(200 - 50) + 50);
-            if (customers.size() < 50) {
+            if (customers.size() < 1000) {
                 customers.add(cst);
                 System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
             }
             try {
-                Thread.sleep(rand1.nextInt(5000 - 1000) + 1000);
+                Thread.sleep(rand1.nextInt(500 - 100) + 100);
             } catch (InterruptedException ex) {
                 //Logger.getLogger(GeneralStore.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -151,18 +154,64 @@ public class GeneralStore {
     }
 
     public void createPatways() {
-        for (int i = 0; i < 5; i++) {
-            Pathway p = new Pathway(i);
+        //for (int i = 0; i < 1; i++) {
+            Pathway p = new Pathway(0, 12, 7);
             //Random r = new Random();
             //int productA = r.nextInt(products.size());
-            //int prodcutB = r.nextInt(products.size());
+            //int productB = r.nextInt(products.size());
             for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(new Products("Banana Infused Rum", 5.00, 7)); //p.addProductA(products.get(productA);
-                p.addProductB(new Products("Keg of Beer", 22.00, 8));//p.addProductB(products.get(productB);
+                p.addProductA(products.get(6)); //p.addProductA(products.get(productA));
+                p.addProductB(products.get(7));//       p.addProductB(products.get(productB));
             }
             System.out.println(p.toString());
             pathways.add(p);
-        }
+            
+            p = new Pathway(0, 8, 7);
+            //Random r = new Random();
+            //int productA = r.nextInt(products.size());
+            //int productB = r.nextInt(products.size());
+            for (int x = 0; x < p.getMaxAmount(); x++) {
+                p.addProductA(products.get(3)); //p.addProductA(products.get(productA));
+                p.addProductB(products.get(4));//       p.addProductB(products.get(productB));
+            }
+            System.out.println(p.toString());
+            pathways.add(p);
+            
+            p = new Pathway(0, 4, 7);
+            //Random r = new Random();
+            //int productA = r.nextInt(products.size());
+            //int productB = r.nextInt(products.size());
+            for (int x = 0; x < p.getMaxAmount(); x++) {
+                p.addProductA(products.get(0)); //p.addProductA(products.get(productA));
+                p.addProductB(products.get(1));//       p.addProductB(products.get(productB));
+            }
+            System.out.println(p.toString());
+            pathways.add(p);
+            
+             p = new Pathway(0, 16, 7);
+            //Random r = new Random();
+            //int productA = r.nextInt(products.size());
+            //int productB = r.nextInt(products.size());
+            for (int x = 0; x < p.getMaxAmount(); x++) {
+                p.addProductA(products.get(2)); //p.addProductA(products.get(productA));
+                p.addProductB(products.get(5));//       p.addProductB(products.get(productB));
+            }
+            System.out.println(p.toString());
+            pathways.add(p);
+            
+             p = new Pathway(0, 20, 7);
+            //Random r = new Random();
+            //int productA = r.nextInt(products.size());
+            //int productB = r.nextInt(products.size());
+            for (int x = 0; x < p.getMaxAmount(); x++) {
+                p.addProductA(products.get(8)); //p.addProductA(products.get(productA));
+                p.addProductB(products.get(9));//       p.addProductB(products.get(productB));
+            }
+            System.out.println(p.toString());
+            pathways.add(p);
+            
+            
+       // }
     }
 
     public void createDepartements() {
@@ -176,6 +225,10 @@ public class GeneralStore {
             departments.add(d);
 
         }
+    }
+    
+    public void createCashRegister(){
+        CashRegister c = new CashRegister();
     }
 
     public void createWareHouse() {
