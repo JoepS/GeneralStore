@@ -178,7 +178,7 @@ public class GeneralStore {
     public void createPatways() {
         //for (int i = 0; i < 1; i++) {
         Pathway p = new Pathway(0, 12, 7);
-            //Random r = new Random();
+        //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -189,7 +189,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 8, 7);
-            //Random r = new Random();
+        //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -200,7 +200,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 4, 7);
-            //Random r = new Random();
+        //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -211,7 +211,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 16, 7);
-            //Random r = new Random();
+        //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -222,7 +222,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 20, 7);
-            //Random r = new Random();
+        //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -241,7 +241,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
                 d.setCurrentEmployee(employees.get(i));
-                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
+                changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -252,8 +252,10 @@ public class GeneralStore {
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
-                d.setCurrentEmployee(employees.get(i));
-                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
+                if (departments.get(0).getCurrentEmployee() != employees.get(i)) {
+                    d.setCurrentEmployee(employees.get(i));
+                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                }
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -264,8 +266,10 @@ public class GeneralStore {
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
-                d.setCurrentEmployee(employees.get(i));
-                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
+                if (departments.get(1).getCurrentEmployee() != employees.get(i) && departments.get(0).getCurrentEmployee() != employees.get(i)) {
+                    d.setCurrentEmployee(employees.get(i));
+                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                }
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -277,10 +281,34 @@ public class GeneralStore {
 
     public void createCashRegister() {
         CashRegister c = new CashRegister(0, true, 16, 1);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnCashRegister() == true) {
+                c.setCurrentEmployee(employees.get(i));
+                changeLabel(c.getX(), c.getY(), employees.get(i).getFirstName());
+            }
+        }
         casregisters.add(c);
+
         c = new CashRegister(0, true, 18, 1);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnCashRegister() == true) {
+                if (casregisters.get(0).getCurrentEmployee() != employees.get(i)) {
+                    c.setCurrentEmployee(employees.get(i));
+                    changeLabel(c.getX(), c.getY(), employees.get(i).getFirstName());
+                }
+            }
+        }
         casregisters.add(c);
+
         c = new CashRegister(0, true, 20, 1);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnCashRegister() == true) {
+                if (casregisters.get(0).getCurrentEmployee() != employees.get(i) && casregisters.get(1).getCurrentEmployee() != employees.get(i)) {
+                    c.setCurrentEmployee(employees.get(i));
+                    changeLabel(c.getX(), c.getY()+1, employees.get(i).getFirstName());
+                }
+            }
+        }
         casregisters.add(c);
     }
 
