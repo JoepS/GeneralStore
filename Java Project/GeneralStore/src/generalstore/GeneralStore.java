@@ -241,7 +241,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
                 d.setCurrentEmployee(employees.get(i));
-                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -253,7 +253,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
                 d.setCurrentEmployee(employees.get(i));
-                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -265,7 +265,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
                 d.setCurrentEmployee(employees.get(i));
-                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+                changeLabel(d.getX(), d.getY(), employees.get(i).getFirstName());
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
