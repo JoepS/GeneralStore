@@ -4,6 +4,11 @@
  */
 package generalstore;
 
+import static generalstore.GeneralStore.display;
+import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Matthijs
@@ -61,6 +66,19 @@ public class Employee extends Person{
     public void setDepartement(Department department){
         this.department = department;
     }
+    
+    public void changeLabel(int x, int y, String text) {
+        Component[] comp = display.getFrame().getContentPane().getComponents();
+        JPanel panel = (JPanel) comp[0];
+        comp = panel.getComponents();
+        for (int i = 0; i < comp.length; i++) {
+            if (comp[i].getName().equals(x + "," + y)) {
+                JLabel l = (JLabel) comp[i];
+                l.setText(text);
+            }
+        }
+    }
+    
 }
     
 /*
