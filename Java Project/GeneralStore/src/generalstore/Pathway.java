@@ -6,6 +6,7 @@
 
 package generalstore;
 
+import com.mchange.v2.c3p0.C3P0Registry;
 import java.util.ArrayList;
 
 /**
@@ -18,10 +19,14 @@ public class Pathway {
     private ArrayList<Products> productsB;
     private int maxAmount = 50;
     
-    public Pathway(int id){
+    private int x, y;
+    
+    public Pathway(int id, int x, int y){
         this.id = id;
         this.productsA = new ArrayList<>();
         this.productsB = new ArrayList<>();
+        this.x = x;
+        this.y = y;
     }
     
     public int getMaxAmount(){
@@ -92,5 +97,64 @@ public class Pathway {
         }
         
         return s;
+    }
+    
+    public Products removeProductA(){
+        if(isProductAEmpty()){
+            refillA();
+        }
+        Products a = productsA.get(productsA.size()-1);
+        productsA.remove(productsA.size()-1);
+        return a;        
+    }
+    
+    public Products removeProductB(){
+        if(isProductBEmpty()){
+            refillB();
+        }
+        Products b = productsB.get(productsB.size()-1);
+        productsB.remove(productsB.size()-1);
+        return b;        
+    }
+    
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
+    
+    public Boolean isProductAEmpty(){
+        if(productsA.size() <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public Boolean isProductBEmpty(){
+        if(productsB.size() <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    
+    public void refillA(){
+        Products a = productsA.get(0);
+        for (int i = 0; i < maxAmount - 1; i++) {
+            productsA.add(a);
+        }
+    }
+    
+    public void refillB(){
+        Products b = productsB.get(0);
+        for (int i = 0; i < maxAmount - 1; i++) {
+            productsB.add(b);
+        }
     }
 }
