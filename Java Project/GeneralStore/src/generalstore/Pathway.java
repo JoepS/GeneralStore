@@ -6,6 +6,7 @@
 
 package generalstore;
 
+import com.mchange.v2.c3p0.C3P0Registry;
 import java.util.ArrayList;
 
 /**
@@ -99,12 +100,18 @@ public class Pathway {
     }
     
     public Products removeProductA(){
+        if(isProductAEmpty()){
+            refillA();
+        }
         Products a = productsA.get(productsA.size()-1);
         productsA.remove(productsA.size()-1);
         return a;        
     }
     
     public Products removeProductB(){
+        if(isProductBEmpty()){
+            refillB();
+        }
         Products b = productsB.get(productsB.size()-1);
         productsB.remove(productsB.size()-1);
         return b;        
@@ -116,5 +123,38 @@ public class Pathway {
     
     public int getY(){
         return y;
+    }
+    
+    public Boolean isProductAEmpty(){
+        if(productsA.size() <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public Boolean isProductBEmpty(){
+        if(productsB.size() <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    
+    public void refillA(){
+        Products a = productsA.get(0);
+        for (int i = 0; i < maxAmount - 1; i++) {
+            productsA.add(a);
+        }
+    }
+    
+    public void refillB(){
+        Products b = productsB.get(0);
+        for (int i = 0; i < maxAmount - 1; i++) {
+            productsB.add(b);
+        }
     }
 }

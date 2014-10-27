@@ -90,7 +90,7 @@ public class Customer extends Person {
                             changeLabel(this.getX(), this.getY(), "");
                             this.destination(pathways.get(j).getX(), pathways.get(j).getY());
                             try {
-                                Thread.sleep(00);
+                                Thread.sleep(500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -102,7 +102,7 @@ public class Customer extends Person {
                             changeLabel(this.getX(), this.getY(), "");
                             this.destination(pathways.get(j).getX(), pathways.get(j).getY());
                             try {
-                                Thread.sleep(00);
+                                Thread.sleep(500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -131,7 +131,7 @@ public class Customer extends Person {
                 }
                 this.updatable = false;
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                 }
