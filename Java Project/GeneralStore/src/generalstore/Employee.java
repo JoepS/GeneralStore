@@ -37,7 +37,7 @@ public class Employee extends Person{
         return this.refillProducts;
     }
     public Boolean getOnDepartement(){
-        return this.getOnDepartement();
+        return this.onDepartment;
     }
     public Boolean getDeliveryWagonDuty(){
         return deliveryWagonDuty;
