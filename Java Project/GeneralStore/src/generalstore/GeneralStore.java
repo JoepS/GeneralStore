@@ -160,19 +160,19 @@ public class GeneralStore {
         Products prd10 = new Products("Domesticated Razorback", 51.00, 0);
         products.add(prd10);
         
-        Products prd11 = new Products("Elixir of Mana", 4.00, 11);
+        Products prd11 = new Products("Elixir of Mana", 4.00, 0);
         products.add(prd11);
         
-        Products prd12 = new Products("Argent Warhorse", 25.00, 12);
+        Products prd12 = new Products("Argent Warhorse", 25.00, 0);
         products.add(prd12);
         
         Products prd13 = new Products("Spice bread", 2.00, 13);
         products.add(prd13);
         
-        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 14);
+        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 0);
         products.add(prd14);
         
-        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 15);
+        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 0);
         products.add(prd15);
         
     }
