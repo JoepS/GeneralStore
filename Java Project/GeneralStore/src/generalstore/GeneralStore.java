@@ -48,6 +48,10 @@ public class GeneralStore {
 
         casregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
+        Database db = new Database();
+        
+        db.createDatabase();
+        
         gs.Createproduct();
         gs.createCashRegister();
         gs.createWareHouse();
@@ -164,7 +168,7 @@ public class GeneralStore {
         Products prd12 = new Products("Argent Warhorse", 25.00, 0);
         products.add(prd12);
 
-        Products prd13 = new Products("Spice bread", 2.00, 13);
+        Products prd13 = new Products("Spice bread", 2.00, 0);
         products.add(prd13);
 
         Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 0);
