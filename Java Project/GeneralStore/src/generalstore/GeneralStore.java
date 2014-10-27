@@ -1,4 +1,3 @@
-
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -48,6 +47,9 @@ public class GeneralStore {
 
         casregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
+        Database db = new Database();
+        
+        db.createDatabase();
         gs.Createproduct();
         gs.createCashRegister();
         gs.createWareHouse();
