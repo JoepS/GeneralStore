@@ -184,6 +184,7 @@ public class GeneralStore {
 
     public void createWareHouse() {
         Warehouse w = new Warehouse();
+        w.createFactory();
         for (int i = 0; i < products.size(); i++) {
             
             for (int j = 0; j < w.getMaxAmount(); j++) {
