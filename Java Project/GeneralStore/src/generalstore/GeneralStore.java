@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -132,31 +133,31 @@ public class GeneralStore {
 
     static void Createproduct() {
         //Elixir
-        Products prd1 = new Products("Elixir of Healing", 3.00, 1);
+        Products prd1 = new Products("Elixir of Healing", 3.00, 0);
         products.add(prd1);
         //Backpack
-        Products prd2 = new Products("Bottomless Backpack", 34.00, 2);
+        Products prd2 = new Products("Bottomless Backpack", 34.00, 0);
         products.add(prd2);
         //Gear
-        Products prd3 = new Products("Copper Chain Vest", 8.00, 3);
+        Products prd3 = new Products("Copper Chain Vest", 8.00, 0);
         products.add(prd3);
         //Weapons
-        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 4);
+        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 0);
         products.add(prd4);
-        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 5);
+        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 0);
         products.add(prd5);
-        Products prd6 = new Products("Shadowmourne", 34.00, 6);
+        Products prd6 = new Products("Shadowmourne", 34.00, 0);
         products.add(prd6);
         //Alcohol
-        Products prd7 = new Products("Banana Infused Rum", 5.00, 7);
+        Products prd7 = new Products("Banana Infused Rum", 5.00, 0);
         products.add(prd7);
-        Products prd8 = new Products("Keg of Beer", 22.00, 8);
+        Products prd8 = new Products("Keg of Beer", 22.00, 0);
         products.add(prd8);
         //Food
-        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 9);
+        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 0);
         products.add(prd9);
         //Mount
-        Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
+        Products prd10 = new Products("Domesticated Razorback", 51.00, 0);
         products.add(prd10);
         
         Products prd11 = new Products("Elixir of Mana", 4.00, 11);
@@ -261,6 +262,7 @@ public class GeneralStore {
 
     public void createWareHouse() {
         Warehouse w = new Warehouse();
+        w.createFactory();
         for (int i = 0; i < products.size(); i++) {
             
             for (int j = 0; j < w.getMaxAmount(); j++) {
