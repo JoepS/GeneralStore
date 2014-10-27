@@ -26,7 +26,7 @@ public class GeneralStore {
     static ArrayList<Pathway> pathways;
     static ArrayList<Warehouse> warehouse;
     static ArrayList<CashRegister> casregisters;
-
+    
     static Display display;
 
     /**
@@ -45,13 +45,11 @@ public class GeneralStore {
         warehouse = new ArrayList<>();
 
         casregisters = new ArrayList<>();
-        GeneralStore gs = new GeneralStore(); 
+        GeneralStore gs = new GeneralStore();
         gs.Createproduct();
         gs.createCashRegister();
-        gs.createWareHouse();
 
-        
-        
+        gs.createWareHouse();
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
@@ -81,7 +79,7 @@ public class GeneralStore {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        
+
         Thread t = new Thread(new ControlCustomers(customers));
         t.start();
 
@@ -115,18 +113,18 @@ public class GeneralStore {
     }
 
     static void CreateEmployee() {
-        Employee emp1 = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0);
-        employees.add(emp1);
-        Employee emp2 = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
-        employees.add(emp2);
-        Employee emp3 = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0);
-        employees.add(emp3);
-        Employee emp4 = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0);
-        employees.add(emp4);
-        Employee emp5 = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0);
-        employees.add(emp5);
-        Employee emp6 = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0);
-        employees.add(emp6);
+        Employee emp = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0);
+        employees.add(emp);
+        emp = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
+        employees.add(emp);
+        emp = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0);
+        employees.add(emp);
+        emp = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0);
+        employees.add(emp);
+        emp = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0);
+        employees.add(emp);
+        emp = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0);
+        employees.add(emp);
     }
 
     static void Createproduct() {
@@ -161,83 +159,110 @@ public class GeneralStore {
 
     public void createPatways() {
         //for (int i = 0; i < 1; i++) {
-            Pathway p = new Pathway(0, 12, 7);
-            //Random r = new Random();
-            //int productA = r.nextInt(products.size());
-            //int productB = r.nextInt(products.size());
-            for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(products.get(6)); //p.addProductA(products.get(productA));
-                p.addProductB(products.get(7));//       p.addProductB(products.get(productB));
-            }
-            System.out.println(p.toString());
-            pathways.add(p);
-            
-            p = new Pathway(0, 8, 7);
-            //Random r = new Random();
-            //int productA = r.nextInt(products.size());
-            //int productB = r.nextInt(products.size());
-            for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(products.get(3)); //p.addProductA(products.get(productA));
-                p.addProductB(products.get(4));//       p.addProductB(products.get(productB));
-            }
-            System.out.println(p.toString());
-            pathways.add(p);
-            
-            p = new Pathway(0, 4, 7);
-            //Random r = new Random();
-            //int productA = r.nextInt(products.size());
-            //int productB = r.nextInt(products.size());
-            for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(products.get(0)); //p.addProductA(products.get(productA));
-                p.addProductB(products.get(1));//       p.addProductB(products.get(productB));
-            }
-            System.out.println(p.toString());
-            pathways.add(p);
-            
-             p = new Pathway(0, 16, 7);
-            //Random r = new Random();
-            //int productA = r.nextInt(products.size());
-            //int productB = r.nextInt(products.size());
-            for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(products.get(2)); //p.addProductA(products.get(productA));
-                p.addProductB(products.get(5));//       p.addProductB(products.get(productB));
-            }
-            System.out.println(p.toString());
-            pathways.add(p);
-            
-             p = new Pathway(0, 20, 7);
-            //Random r = new Random();
-            //int productA = r.nextInt(products.size());
-            //int productB = r.nextInt(products.size());
-            for (int x = 0; x < p.getMaxAmount(); x++) {
-                p.addProductA(products.get(8)); //p.addProductA(products.get(productA));
-                p.addProductB(products.get(9));//       p.addProductB(products.get(productB));
-            }
-            System.out.println(p.toString());
-            pathways.add(p);
-            
-            
-       // }
+        Pathway p = new Pathway(0, 12, 7);
+        //Random r = new Random();
+        //int productA = r.nextInt(products.size());
+        //int productB = r.nextInt(products.size());
+        for (int x = 0; x < p.getMaxAmount(); x++) {
+            p.addProductA(products.get(6)); //p.addProductA(products.get(productA));
+            p.addProductB(products.get(7));//       p.addProductB(products.get(productB));
+        }
+        System.out.println(p.toString());
+        pathways.add(p);
+
+        p = new Pathway(0, 8, 7);
+        //Random r = new Random();
+        //int productA = r.nextInt(products.size());
+        //int productB = r.nextInt(products.size());
+        for (int x = 0; x < p.getMaxAmount(); x++) {
+            p.addProductA(products.get(3)); //p.addProductA(products.get(productA));
+            p.addProductB(products.get(4));//       p.addProductB(products.get(productB));
+        }
+        System.out.println(p.toString());
+        pathways.add(p);
+
+        p = new Pathway(0, 4, 7);
+        //Random r = new Random();
+        //int productA = r.nextInt(products.size());
+        //int productB = r.nextInt(products.size());
+        for (int x = 0; x < p.getMaxAmount(); x++) {
+            p.addProductA(products.get(0)); //p.addProductA(products.get(productA));
+            p.addProductB(products.get(1));//       p.addProductB(products.get(productB));
+        }
+        System.out.println(p.toString());
+        pathways.add(p);
+
+        p = new Pathway(0, 16, 7);
+        //Random r = new Random();
+        //int productA = r.nextInt(products.size());
+        //int productB = r.nextInt(products.size());
+        for (int x = 0; x < p.getMaxAmount(); x++) {
+            p.addProductA(products.get(2)); //p.addProductA(products.get(productA));
+            p.addProductB(products.get(5));//       p.addProductB(products.get(productB));
+        }
+        System.out.println(p.toString());
+        pathways.add(p);
+
+        p = new Pathway(0, 20, 7);
+        //Random r = new Random();
+        //int productA = r.nextInt(products.size());
+        //int productB = r.nextInt(products.size());
+        for (int x = 0; x < p.getMaxAmount(); x++) {
+            p.addProductA(products.get(8)); //p.addProductA(products.get(productA));
+            p.addProductB(products.get(9));//       p.addProductB(products.get(productB));
+        }
+        System.out.println(p.toString());
+        pathways.add(p);
+
+        // }
     }
 
     public void createDepartements() {
-        for (int i = 0; i < 5; i++) {
-            Department d = new Department(i);
-            for (int x = 0; x < d.getMaxAmount(); x++) {
-                d.setCurrentEmployee(new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0));
-                d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
-            }
-            System.out.println(d.toString());
-            departments.add(d);
 
+        Department d = new Department(0, 3, 5);
+        departments.add(d);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnDepartement() == true) {
+                d.setCurrentEmployee(employees.get(i));
+                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+            }
         }
+        for (int x = 0; x < d.getMaxAmount(); x++) {
+            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+        }
+
+        d = new Department(1, 12, 17);
+        departments.add(d);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnDepartement() == true) {
+                d.setCurrentEmployee(employees.get(i));
+                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+            }
+        }
+        for (int x = 0; x < d.getMaxAmount(); x++) {
+            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+        }
+
+        d = new Department(2, 15, 4);
+        departments.add(d);
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getOnDepartement() == true) {
+                d.setCurrentEmployee(employees.get(i));
+                changeLabel(departments.get(i).getX(), departments.get(i).getY(), employees.get(i).getFirstName());
+            }
+        }
+        for (int x = 0; x < d.getMaxAmount(); x++) {
+            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+        }
+
+        System.out.println(d.toString());
     }
-    
-    public void createCashRegister(){
+
+    public void createCashRegister() {
         CashRegister c = new CashRegister(0, true, 16, 1);
         casregisters.add(c);
         c = new CashRegister(0, true, 18, 1);
-        casregisters.add(c);        
+        casregisters.add(c);
         c = new CashRegister(0, true, 20, 1);
         casregisters.add(c);
     }
@@ -245,7 +270,7 @@ public class GeneralStore {
     public void createWareHouse() {
         Warehouse w = new Warehouse();
         for (int i = 0; i < products.size(); i++) {
-            
+
             for (int j = 0; j < w.getMaxAmount(); j++) {
                 w.addProduct(products.get(i));
             }

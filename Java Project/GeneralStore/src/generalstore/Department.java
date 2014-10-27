@@ -17,6 +17,21 @@ public class Department {
     private ArrayList<Products> products;
     private int maxAmount = 50;
     private Employee currentEmployee;
+    private int x, y;
+
+    public int getY() {
+        return y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public Department(int id, int x, int y) {
+        this.id = id;
+        this.x = x;
+        this.y = y;
+    }
 
     public Department(int id) {
         this.id = id;
@@ -30,7 +45,7 @@ public class Department {
     public Employee getCurrentEmployee() {
         return currentEmployee;
     }
-    
+
     public void addProduct(Products p) {
         if (products.size() < maxAmount) {
             products.add(p);
@@ -44,17 +59,17 @@ public class Department {
         }
         return p;
     }
-    
-    public int getMaxAmount(){
+
+    public int getMaxAmount() {
         return maxAmount;
     }
-    
-    public String toString(){
+
+    public String toString() {
         String s = this.id + "";
-        if(currentEmployee != null){
-           s += " Employee: " + currentEmployee.getFirstName();
+        if (currentEmployee != null) {
+            s += " Employee: " + currentEmployee.getFirstName();
         }
-        if(!products.isEmpty()){
+        if (!products.isEmpty()) {
             s += " Product " + products.get(0).getProductName() + " aantal: " + products.size();
         }
         return s;
