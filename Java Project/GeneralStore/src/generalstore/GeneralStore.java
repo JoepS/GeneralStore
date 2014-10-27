@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import net.sf.ehcache.util.ProductInfo;
 
 /**
  *
@@ -157,6 +158,22 @@ public class GeneralStore {
         //Mount
         Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
         products.add(prd10);
+        
+        Products prd11 = new Products("Elixir of Mana", 4.00, 11);
+        products.add(prd11);
+        
+        Products prd12 = new Products("Argent Warhorse", 25.00, 12);
+        products.add(prd12);
+        
+        Products prd13 = new Products("Spice bread", 2.00, 13);
+        products.add(prd13);
+        
+        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 14);
+        products.add(prd14);
+        
+        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 15);
+        products.add(prd15);
+        
     }
 
     public void createPatways() {
