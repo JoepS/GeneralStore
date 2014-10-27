@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import net.sf.ehcache.util.ProductInfo;
 
 /**
  *
@@ -26,7 +28,7 @@ public class GeneralStore {
     static ArrayList<Pathway> pathways;
     static ArrayList<Warehouse> warehouse;
     static ArrayList<CashRegister> casregisters;
-    
+
     static Display display;
 
     /**
@@ -48,8 +50,8 @@ public class GeneralStore {
         GeneralStore gs = new GeneralStore();
         gs.Createproduct();
         gs.createCashRegister();
-
         gs.createWareHouse();
+
         gs.CreateEmployee();
         gs.createPatways();
         gs.createDepartements();
@@ -129,38 +131,54 @@ public class GeneralStore {
 
     static void Createproduct() {
         //Elixir
-        Products prd1 = new Products("Elixir of Healing", 3.00, 1);
+        Products prd1 = new Products("Elixir of Healing", 3.00, 0);
         products.add(prd1);
         //Backpack
-        Products prd2 = new Products("Bottomless Backpack", 34.00, 2);
+        Products prd2 = new Products("Bottomless Backpack", 34.00, 0);
         products.add(prd2);
         //Gear
-        Products prd3 = new Products("Copper Chain Vest", 8.00, 3);
+        Products prd3 = new Products("Copper Chain Vest", 8.00, 0);
         products.add(prd3);
         //Weapons
-        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 4);
+        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 0);
         products.add(prd4);
-        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 5);
+        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 0);
         products.add(prd5);
-        Products prd6 = new Products("Shadowmourne", 34.00, 6);
+        Products prd6 = new Products("Shadowmourne", 34.00, 0);
         products.add(prd6);
         //Alcohol
-        Products prd7 = new Products("Banana Infused Rum", 5.00, 7);
+        Products prd7 = new Products("Banana Infused Rum", 5.00, 0);
         products.add(prd7);
-        Products prd8 = new Products("Keg of Beer", 22.00, 8);
+        Products prd8 = new Products("Keg of Beer", 22.00, 0);
         products.add(prd8);
         //Food
-        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 9);
+        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 0);
         products.add(prd9);
         //Mount
-        Products prd10 = new Products("Domesticated Razorback", 51.00, 10);
+        Products prd10 = new Products("Domesticated Razorback", 51.00, 0);
         products.add(prd10);
+
+        Products prd11 = new Products("Elixir of Mana", 4.00, 0);
+        products.add(prd11);
+
+        Products prd12 = new Products("Argent Warhorse", 25.00, 0);
+        products.add(prd12);
+
+        Products prd13 = new Products("Spice bread", 2.00, 13);
+        products.add(prd13);
+
+        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 0);
+        products.add(prd14);
+
+        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 0);
+        products.add(prd15);
+
     }
 
     public void createPatways() {
         //for (int i = 0; i < 1; i++) {
         Pathway p = new Pathway(0, 12, 7);
-        //Random r = new Random();
+            //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -171,7 +189,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 8, 7);
-        //Random r = new Random();
+            //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -182,7 +200,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 4, 7);
-        //Random r = new Random();
+            //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -193,7 +211,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 16, 7);
-        //Random r = new Random();
+            //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -204,7 +222,7 @@ public class GeneralStore {
         pathways.add(p);
 
         p = new Pathway(0, 20, 7);
-        //Random r = new Random();
+            //Random r = new Random();
         //int productA = r.nextInt(products.size());
         //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
@@ -218,7 +236,6 @@ public class GeneralStore {
     }
 
     public void createDepartements() {
-
         Department d = new Department(0, 3, 5);
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
@@ -269,6 +286,7 @@ public class GeneralStore {
 
     public void createWareHouse() {
         Warehouse w = new Warehouse();
+        w.createFactory();
         for (int i = 0; i < products.size(); i++) {
 
             for (int j = 0; j < w.getMaxAmount(); j++) {

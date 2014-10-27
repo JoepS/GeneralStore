@@ -81,7 +81,7 @@ public class Customer extends Person {
         return this.getFirstName() + " " + this.getLevel() + " " + this.getRace() + " " + gender;
     }
 
-    public void update(ArrayList<Pathway> pathways) {
+    public synchronized void update(ArrayList<Pathway> pathways) {
         if (updatable) {
             for (int i = 0; i < shoppingList.size(); i++) {
                 if (!shoppingCart.contains(shoppingList.get(i))) {
