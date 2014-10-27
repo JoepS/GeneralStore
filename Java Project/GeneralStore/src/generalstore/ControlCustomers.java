@@ -25,7 +25,8 @@ public class ControlCustomers implements Runnable {
     public void run() {
         while (true) {
             for (int i = 0; i < list.size(); i++) {
-                list.get(i).update(GeneralStore.pathways);
+                Customer c = list.get(i);
+                c.update(GeneralStore.pathways);
             }
             try {
                 Thread.sleep(1000);
