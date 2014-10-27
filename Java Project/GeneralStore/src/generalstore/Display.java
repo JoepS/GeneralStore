@@ -95,7 +95,6 @@ public class Display {
                     //Kassa
                     l.setBackground(Color.pink);
                     l.setBorder(BorderFactory.createLineBorder(Color.black));
-                    l.setText("Kassa");
                 } else if (map[y][x] == 5) {
                     l.setBackground(Color.white);
                 } else {
