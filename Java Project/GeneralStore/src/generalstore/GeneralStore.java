@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import java.awt.Component;
@@ -48,14 +44,14 @@ public class GeneralStore {
         casregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         Database db = new Database();
-        
+
         db.createDatabase();
         gs.createProduct();
         gs.createWareHouse();
         gs.createEmployee();
-        
+
         gs.createCashRegister();
-        gs.createPatways();
+        gs.createPathways();
         gs.createDepartements();
         gs.createCustomer();
     }
@@ -133,7 +129,7 @@ public class GeneralStore {
 
     static void createProduct() {
         int max = Integer.MAX_VALUE;
-        
+
         //Elixir
         Products prd1 = new Products(0, "Elixir of Healing", 3.00, max);
         products.add(prd1);
@@ -179,7 +175,7 @@ public class GeneralStore {
 
     }
 
-    public void createPatways() {
+    public void createPathways() {
         //for (int i = 0; i < 1; i++) {
         Pathway p = new Pathway(0, 12, 7);
         //Random r = new Random();
@@ -245,7 +241,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnDepartement() == true) {
                 d.setCurrentEmployee(employees.get(i));
-                changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
@@ -258,7 +254,7 @@ public class GeneralStore {
             if (employees.get(i).getOnDepartement() == true) {
                 if (departments.get(0).getCurrentEmployee() != employees.get(i)) {
                     d.setCurrentEmployee(employees.get(i));
-                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                    changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
                 }
             }
         }
@@ -272,7 +268,7 @@ public class GeneralStore {
             if (employees.get(i).getOnDepartement() == true) {
                 if (departments.get(1).getCurrentEmployee() != employees.get(i) && departments.get(0).getCurrentEmployee() != employees.get(i)) {
                     d.setCurrentEmployee(employees.get(i));
-                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                    changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
                 }
             }
         }
@@ -287,7 +283,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnCashRegister() == true) {
                 c.setCurrentEmployee(employees.get(i));
-                changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
+                changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
             }
         }
         casregisters.add(c);
@@ -297,7 +293,7 @@ public class GeneralStore {
             if (employees.get(i).getOnCashRegister() == true) {
                 if (casregisters.get(0).getCurrentEmployee() != employees.get(i)) {
                     c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
+                    changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
                 }
             }
         }
@@ -308,7 +304,7 @@ public class GeneralStore {
             if (employees.get(i).getOnCashRegister() == true) {
                 if (casregisters.get(0).getCurrentEmployee() != employees.get(i) && casregisters.get(1).getCurrentEmployee() != employees.get(i)) {
                     c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
+                    changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
                 }
             }
         }
@@ -320,11 +316,10 @@ public class GeneralStore {
         w.createFactory();
         for (int i = 0; i < products.size(); i++) {
 
-            for (int j = 0; j < w.getMaxAmount(); j++) {
+            for (int j = 0; j < 1; j++) {
                 w.addProduct(products.get(i));
             }
             warehouse.add(w);
-            System.out.println(warehouse.get(i));
         }
         w.addProducts();
     }
