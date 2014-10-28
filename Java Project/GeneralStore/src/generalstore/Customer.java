@@ -8,6 +8,8 @@ package generalstore;
 import static generalstore.GeneralStore.display;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -81,42 +83,75 @@ public class Customer extends Person {
         return this.getFirstName() + " " + this.getLevel() + " " + this.getRace() + " " + gender;
     }
 
-    public synchronized void update(ArrayList<Pathway> pathways) {
+    public synchronized boolean update(ArrayList<Pathway> pathways, ArrayList<Department> departments) {
         if (updatable) {
             for (int i = 0; i < shoppingList.size(); i++) {
                 if (!shoppingCart.contains(shoppingList.get(i))) {
                     for (int j = 0; j < pathways.size(); j++) {
                         if (pathways.get(j).getProductA().getProductID() == shoppingList.get(i).getProductID()) {
-                            changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+
                             try {
                                 Thread.sleep(500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            changeLabel(this.getX(), this.getY(), "");
+                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductA());
-                            this.shoppingList.remove(shoppingList.get(i));
-                            return;
+                            break;
                         } else if (pathways.get(j).getProductB().getProductID() == shoppingList.get(i).getProductID()) {
-                            changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+
                             try {
                                 Thread.sleep(500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
+                            changeLabel(this.getX(), this.getY(), "");
+                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductB());
-                            this.shoppingList.remove(shoppingList.get(i));
-                            return;
+                            break;
+                        }
+                    }
+                    for (int j = 0; j < departments.size(); j++) {
+                        if (departments.get(j).getProduct().getProductID() == shoppingList.get(i).getProductID()) {
+
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            changeLabel(this.getX(), this.getY(), "");
+                            this.destination(departments.get(j).getX(), departments.get(j).getY());
+                            changeLabel(this.getX(), this.getY(), this.getFirstName());
+                            this.shoppingCart.add(departments.get(j).removeProduct());
                         }
                     }
                 }
             }
-            if (shoppingList.isEmpty()) {
+            boolean doneshopping = false;
+
+            
+            
+
+            /*if (shoppingList.size() == shoppingCart.size()) {
+                for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {
+                    if (shoppingList.get(i).getProductID() == shoppingCart.get(i).getProductID()) {
+                        doneshopping = true;
+                    } else {
+                        doneshopping = false;
+                        break;
+                    }
+                }
+            }*/
+            
+           // if(shoppingCart.size() == shoppingList.size()){
+                doneshopping = true;
+            //}
+            if (doneshopping) {
                 System.out.println(this.getFirstName() + "is done shopping");
-                
+
                 changeLabel(this.getX(), this.getY(), "");
                 Random r = new Random();
                 CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(2));
@@ -135,10 +170,16 @@ public class Customer extends Person {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+
                 changeLabel(this.getX(), this.getY(), "");
+                System.out.println("REMOVE" + this.getFirstName());
+                GeneralStore.customers.remove(this);
             }
         }
+        else{
+            return false;
+        }
+        return true;
     }
 
     public void changeLabel(int x, int y, String text) {

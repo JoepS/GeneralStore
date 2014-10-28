@@ -81,10 +81,11 @@ public class GeneralStore {
             System.out.println(e.toString());
         }
 
-        Thread t = new Thread(new ControlCustomers(customers));
-        t.start();
+        //Thread t = new Thread(new ControlCustomers(customers));
+        //t.start();
 
         Random rand1 = new Random();
+        changeLabel(1, 26, "Customers:");
         while (true) {
             randomName = words.get(rand1.nextInt(words.size() - 1));
             Customer cst = new Customer(randomName, "", rand1.nextInt(1000), races.get(rand1.nextInt(races.size() - 1)), rand1.nextBoolean(), 12, 1, rand1.nextInt(200 - 50) + 50);
@@ -92,6 +93,7 @@ public class GeneralStore {
                 customers.add(cst);
                 //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
+
                 try {
                     if (customers.size() >= 5 ) {
                         System.out.println("Kassa 2 open");
@@ -116,6 +118,11 @@ public class GeneralStore {
                 } catch (Exception e) {
                     System.out.println("catch");
                 }
+
+                Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
+                t.start();
+                changeLabel(2, 26, "" + customers.size());
+
             }
             try {
                 Thread.sleep(rand1.nextInt(500 - 100) + 100);
