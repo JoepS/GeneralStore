@@ -70,7 +70,7 @@ public class Pathway {
     }
     
     public Products getProductA(){
-        Products p = new Products("Invalid", 0, 0);
+        Products p = new Products(0, "Invalid", 0, 0);
         if(!productsA.isEmpty()){
            p = productsA.get(productsA.size()-1);
         }
@@ -78,7 +78,7 @@ public class Pathway {
     }
     
     public Products getProductB(){
-        Products p = new Products("Invalid", 0, 0);
+        Products p = new Products(0, "Invalid", 0, 0);
         if(!productsB.isEmpty()){
            p = productsB.get(productsB.size()-1);
         }
