@@ -31,6 +31,7 @@ public class Department {
         this.id = id;
         this.x = x;
         this.y = y;
+        products = new ArrayList<>();
     }
 
     public Department(int id) {

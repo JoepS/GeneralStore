@@ -17,6 +17,15 @@ public class CashRegister {
     private boolean checkoutEmployee;
     private List<Products> ShoppingCart;    
     private int x,y;
+    private Employee currentEmployee;
+
+    public void setCurrentEmployee(Employee currentEmployee) {
+        this.currentEmployee = currentEmployee;
+    }
+
+    public Employee getCurrentEmployee() {
+        return currentEmployee;
+    }
 
     public CashRegister(double goldStorage, boolean checkoutEmployee, List<Products> ShoppingCart) {
         this.goldStorage = goldStorage;
