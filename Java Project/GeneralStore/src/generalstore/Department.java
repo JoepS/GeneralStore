@@ -54,7 +54,7 @@ public class Department {
     }
 
     public Products getProduct() {
-        Products p = new Products("Invalid", 0, 0);
+        Products p = new Products(0, "Invalid", 0, 0);
         if (products.size() > 0 && currentEmployee != null) {
             p = products.get(products.size() - 1);
         }

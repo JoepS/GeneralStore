@@ -44,6 +44,7 @@ public class Database {
                     + "(id INTEGER NULL AUTO_INCREMENT, "
                     + " product_name VARCHAR(255), "
                     + " product_price DOUBLE, "
+                    + " product_amount INT, "
                     + " PRIMARY KEY ( id ))";
 
             stmt.executeUpdate(sql);

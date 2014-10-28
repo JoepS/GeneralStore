@@ -50,17 +50,17 @@ public class GeneralStore {
         Database db = new Database();
         
         db.createDatabase();
-        gs.Createproduct();
+        gs.createProduct();
         gs.createWareHouse();
-        gs.CreateEmployee();
+        gs.createEmployee();
         
         gs.createCashRegister();
         gs.createPatways();
         gs.createDepartements();
-        gs.CreateCustomer();
+        gs.createCustomer();
     }
 
-    public void CreateCustomer() {
+    public void createCustomer() {
         List<String> races = new ArrayList();
         races.add("Orc");
         races.add("Elf");
@@ -116,7 +116,7 @@ public class GeneralStore {
         }
     }
 
-    static void CreateEmployee() {
+    static void createEmployee() {
         Employee emp = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0);
         employees.add(emp);
         emp = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
@@ -131,48 +131,50 @@ public class GeneralStore {
         employees.add(emp);
     }
 
-    static void Createproduct() {
+    static void createProduct() {
+        int max = Integer.MAX_VALUE;
+        
         //Elixir
-        Products prd1 = new Products("Elixir of Healing", 3.00, 0);
+        Products prd1 = new Products(0, "Elixir of Healing", 3.00, max);
         products.add(prd1);
         //Backpack
-        Products prd2 = new Products("Bottomless Backpack", 34.00, 0);
+        Products prd2 = new Products(0, "Bottomless Backpack", 34.00, max);
         products.add(prd2);
         //Gear
-        Products prd3 = new Products("Copper Chain Vest", 8.00, 0);
+        Products prd3 = new Products(0, "Copper Chain Vest", 8.00, max);
         products.add(prd3);
         //Weapons
-        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 0);
+        Products prd4 = new Products(0, "Thori'dal, the Stars' Fury", 2.00, max);
         products.add(prd4);
-        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 0);
+        Products prd5 = new Products(0, "Thunderfury, Blessed Blade of the Windseeker", 1.00, max);
         products.add(prd5);
-        Products prd6 = new Products("Shadowmourne", 34.00, 0);
+        Products prd6 = new Products(0, "Shadowmourne", 34.00, max);
         products.add(prd6);
         //Alcohol
-        Products prd7 = new Products("Banana Infused Rum", 5.00, 0);
+        Products prd7 = new Products(0, "Banana Infused Rum", 5.00, max);
         products.add(prd7);
-        Products prd8 = new Products("Keg of Beer", 22.00, 0);
+        Products prd8 = new Products(0, "Keg of Beer", 22.00, max);
         products.add(prd8);
         //Food
-        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 0);
+        Products prd9 = new Products(0, "Chun Tian Spring Rolls", 4.00, max);
         products.add(prd9);
         //Mount
-        Products prd10 = new Products("Domesticated Razorback", 51.00, 0);
+        Products prd10 = new Products(0, "Domesticated Razorback", 51.00, max);
         products.add(prd10);
 
-        Products prd11 = new Products("Elixir of Mana", 4.00, 0);
+        Products prd11 = new Products(0, "Elixir of Mana", 4.00, max);
         products.add(prd11);
 
-        Products prd12 = new Products("Argent Warhorse", 25.00, 0);
+        Products prd12 = new Products(0, "Argent Warhorse", 25.00, max);
         products.add(prd12);
 
-        Products prd13 = new Products("Spice bread", 2.00, 13);
+        Products prd13 = new Products(0, "Spice bread", 2.00, max);
         products.add(prd13);
 
-        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 0);
+        Products prd14 = new Products(0, "Primal Gladiator's Longbow", 20.00, max);
         products.add(prd14);
 
-        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 0);
+        Products prd15 = new Products(0, "Pauldrons of Guiding Light", 15.00, max);
         products.add(prd15);
 
     }
@@ -247,7 +249,7 @@ public class GeneralStore {
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 1));
         }
 
         d = new Department(1, 12, 17);
@@ -261,7 +263,7 @@ public class GeneralStore {
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 10));
         }
 
         d = new Department(2, 15, 4);
@@ -275,7 +277,7 @@ public class GeneralStore {
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 1));
         }
         System.out.println(d.toString());
     }
