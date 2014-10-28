@@ -49,10 +49,10 @@ public class GeneralStore {
         casregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         gs.Createproduct();
-        gs.createCashRegister();
         gs.createWareHouse();
-
         gs.CreateEmployee();
+        
+        gs.createCashRegister();
         gs.createPatways();
         gs.createDepartements();
         gs.CreateCustomer();
@@ -284,7 +284,7 @@ public class GeneralStore {
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getOnCashRegister() == true) {
                 c.setCurrentEmployee(employees.get(i));
-                changeLabel(c.getX(), c.getY(), employees.get(i).getFirstName());
+                changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
             }
         }
         casregisters.add(c);
@@ -294,7 +294,7 @@ public class GeneralStore {
             if (employees.get(i).getOnCashRegister() == true) {
                 if (casregisters.get(0).getCurrentEmployee() != employees.get(i)) {
                     c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX(), c.getY(), employees.get(i).getFirstName());
+                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
                 }
             }
         }
@@ -305,7 +305,7 @@ public class GeneralStore {
             if (employees.get(i).getOnCashRegister() == true) {
                 if (casregisters.get(0).getCurrentEmployee() != employees.get(i) && casregisters.get(1).getCurrentEmployee() != employees.get(i)) {
                     c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX(), c.getY()+1, employees.get(i).getFirstName());
+                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
                 }
             }
         }
