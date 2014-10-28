@@ -54,7 +54,7 @@ public class Department {
     }
 
     public Products getProduct() {
-        Products p = new Products("Invalid", 0, 0);
+        Products p = new Products(0, "Invalid", 0, 0);
         if (products.size() > 0 && currentEmployee != null) {
             p = products.get(products.size() - 1);
         }
@@ -69,6 +69,9 @@ public class Department {
         String s = this.id + "";
         if (currentEmployee != null) {
             s += " Employee: " + currentEmployee.getFirstName();
+        }
+        else{
+            s += "No employee?";
         }
         if (!products.isEmpty()) {
             s += " Product " + products.get(0).getProductName() + " aantal: " + products.size();

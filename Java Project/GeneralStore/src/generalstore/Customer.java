@@ -154,7 +154,7 @@ public class Customer extends Person {
 
                 changeLabel(this.getX(), this.getY(), "");
                 Random r = new Random();
-                CashRegister cr = GeneralStore.casregisters.get(r.nextInt(2));
+                CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(2));
                 this.destination(cr.getX(), cr.getY());
                 changeLabel(this.getX(), this.getY(), this.getFirstName());
                 cr.goldStorage(cr.calculatePrice(this.shoppingCart));

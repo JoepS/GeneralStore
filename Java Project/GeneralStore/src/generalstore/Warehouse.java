@@ -20,7 +20,6 @@ public class Warehouse {
 
     private static SessionFactory factory;
     private ArrayList<Products> Products_warehouse;
-    private int maxAmount = 999999;
 
     public Warehouse() {
         Products_warehouse = new ArrayList<>();
@@ -28,10 +27,6 @@ public class Warehouse {
 
     public void addProduct(Products p) {
         Products_warehouse.add(p);
-    }
-
-    public int getMaxAmount() {
-        return maxAmount;
     }
 
     public void createFactory() {

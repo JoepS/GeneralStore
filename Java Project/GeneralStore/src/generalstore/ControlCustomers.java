@@ -70,7 +70,7 @@ class customerThread implements Runnable {
     public void run() {
         boolean going = true;
         while (going) {
-            going = c.update(GeneralStore.pathways, GeneralStore.departments);
+            //going = c.update(GeneralStore.pathways, GeneralStore.departments);
         }
     }
 

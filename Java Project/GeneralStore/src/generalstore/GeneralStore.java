@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import java.awt.Component;
@@ -26,7 +22,7 @@ public class GeneralStore {
     static ArrayList<Department> departments;
     static ArrayList<Pathway> pathways;
     static ArrayList<Warehouse> warehouse;
-    static ArrayList<CashRegister> casregisters;
+    static ArrayList<CashRegister> cashregisters;
 
     static Display display;
 
@@ -45,22 +41,23 @@ public class GeneralStore {
         pathways = new ArrayList<>();
         warehouse = new ArrayList<>();
 
-        casregisters = new ArrayList<>();
+        cashregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         Database db = new Database();
-        
+
         db.createDatabase();
-        gs.Createproduct();
+        gs.createProduct();
         gs.createWareHouse();
-        gs.CreateEmployee();
-        
-        gs.createCashRegister();
-        gs.createPatways();
+
+        gs.createEmployee();
+
+        gs.createPathways();
         gs.createDepartements();
-        gs.CreateCustomer();
+        gs.createCashRegister();
+        gs.createCustomer();
     }
 
-    public void CreateCustomer() {
+    public void createCustomer() {
         List<String> races = new ArrayList();
         races.add("Orc");
         races.add("Elf");
@@ -96,10 +93,36 @@ public class GeneralStore {
                 customers.add(cst);
                 //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
+
+                try {
+                    if (customers.size() >= 5 ) {
+                        System.out.println("Kassa 2 open");
+                        createCashRegister();
+                    } else {
+                        cashregisters.get(0).setGoldStorage(cashregisters.get(1).getGoldStorage());
+                        cashregisters.remove(1);
+                    }
+                    if (customers.size() >= 15) {
+                        createCashRegister();
+                    } else {
+                        cashregisters.get(0).setGoldStorage(cashregisters.get(2).getGoldStorage());
+                        cashregisters.remove(2);
+                    }
+                    if (customers.size() >= 30) {
+                        createCashRegister();
+                    } else {
+                        cashregisters.get(0).setGoldStorage(cashregisters.get(3).getGoldStorage());
+                        cashregisters.remove(3);
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("catch");
+                }
+
                 Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
-                
+
             }
             try {
                 Thread.sleep(rand1.nextInt(500 - 100) + 100);
@@ -121,68 +144,70 @@ public class GeneralStore {
         }
     }
 
-    static void CreateEmployee() {
-        Employee emp = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0);
+    static void createEmployee() {
+        Employee emp = new Employee(true, true, true, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0);
+        emp = new Employee(true, false, true, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0);
+        emp = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0);
+        emp = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0);
+        emp = new Employee(true, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(false, true, false, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0);
+        emp = new Employee(true, true, true, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0, false);
         employees.add(emp);
     }
 
-    static void Createproduct() {
+    static void createProduct() {
+        int max = Integer.MAX_VALUE;
+
         //Elixir
-        Products prd1 = new Products("Elixir of Healing", 3.00, 0);
+        Products prd1 = new Products(0, "Elixir of Healing", 3.00, max);
         products.add(prd1);
         //Backpack
-        Products prd2 = new Products("Bottomless Backpack", 34.00, 0);
+        Products prd2 = new Products(0, "Bottomless Backpack", 34.00, max);
         products.add(prd2);
         //Gear
-        Products prd3 = new Products("Copper Chain Vest", 8.00, 0);
+        Products prd3 = new Products(0, "Copper Chain Vest", 8.00, max);
         products.add(prd3);
         //Weapons
-        Products prd4 = new Products("Thori'dal, the Stars' Fury", 2.00, 0);
+        Products prd4 = new Products(0, "Thori'dal, the Stars' Fury", 2.00, max);
         products.add(prd4);
-        Products prd5 = new Products("Thunderfury, Blessed Blade of the Windseeker", 1.00, 0);
+        Products prd5 = new Products(0, "Thunderfury, Blessed Blade of the Windseeker", 1.00, max);
         products.add(prd5);
-        Products prd6 = new Products("Shadowmourne", 34.00, 0);
+        Products prd6 = new Products(0, "Shadowmourne", 34.00, max);
         products.add(prd6);
         //Alcohol
-        Products prd7 = new Products("Banana Infused Rum", 5.00, 0);
+        Products prd7 = new Products(0, "Banana Infused Rum", 5.00, max);
         products.add(prd7);
-        Products prd8 = new Products("Keg of Beer", 22.00, 0);
+        Products prd8 = new Products(0, "Keg of Beer", 22.00, max);
         products.add(prd8);
         //Food
-        Products prd9 = new Products("Chun Tian Spring Rolls", 4.00, 0);
+        Products prd9 = new Products(0, "Chun Tian Spring Rolls", 4.00, max);
         products.add(prd9);
         //Mount
-        Products prd10 = new Products("Domesticated Razorback", 51.00, 0);
+        Products prd10 = new Products(0, "Domesticated Razorback", 51.00, max);
         products.add(prd10);
 
-        Products prd11 = new Products("Elixir of Mana", 4.00, 0);
+        Products prd11 = new Products(0, "Elixir of Mana", 4.00, max);
         products.add(prd11);
 
-        Products prd12 = new Products("Argent Warhorse", 25.00, 0);
+        Products prd12 = new Products(0, "Argent Warhorse", 25.00, max);
         products.add(prd12);
 
-        Products prd13 = new Products("Spice bread", 2.00, 13);
+        Products prd13 = new Products(0, "Spice bread", 2.00, max);
         products.add(prd13);
 
-        Products prd14 = new Products("Primal Gladiator's Longbow", 20.00, 0);
+        Products prd14 = new Products(0, "Primal Gladiator's Longbow", 20.00, max);
         products.add(prd14);
 
-        Products prd15 = new Products("Pauldrons of Guiding Light", 15.00, 0);
+        Products prd15 = new Products(0, "Pauldrons of Guiding Light", 15.00, max);
         products.add(prd15);
 
     }
 
-    public void createPatways() {
+    public void createPathways() {
         //for (int i = 0; i < 1; i++) {
         Pathway p = new Pathway(0, 12, 7);
         //Random r = new Random();
@@ -246,41 +271,53 @@ public class GeneralStore {
         Department d = new Department(0, 3, 5);
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnDepartement() == true) {
-                d.setCurrentEmployee(employees.get(i));
-                changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+            if (employees.get(i).getAlreadyWorking() == false) {
+                if (employees.get(i).getOnDepartement() == true) {
+                    employees.get(i).setAlreadyWorking(true);
+                    d.setCurrentEmployee(employees.get(i));
+                    changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
+                    break;
+                }
+
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 1));
         }
+        System.out.println(d.toString());
 
         d = new Department(1, 12, 17);
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnDepartement() == true) {
-                if (departments.get(0).getCurrentEmployee() != employees.get(i)) {
+            if (employees.get(i).getAlreadyWorking() == false) {
+                if (employees.get(i).getOnDepartement() == true) {
+                    employees.get(i).setAlreadyWorking(true);
                     d.setCurrentEmployee(employees.get(i));
-                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                    changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
+          break;
+
                 }
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 10));
         }
+        System.out.println(d.toString());
 
         d = new Department(2, 15, 4);
         departments.add(d);
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnDepartement() == true) {
-                if (departments.get(1).getCurrentEmployee() != employees.get(i) && departments.get(0).getCurrentEmployee() != employees.get(i)) {
+            if (employees.get(i).getAlreadyWorking() == false) {
+                if (employees.get(i).getOnDepartement() == true) {
+                    employees.get(i).setAlreadyWorking(true);
                     d.setCurrentEmployee(employees.get(i));
-                    changeLabel(d.getX()-1, d.getY(), employees.get(i).getFirstName());
+                    changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
+                    break;
                 }
             }
         }
         for (int x = 0; x < d.getMaxAmount(); x++) {
-            d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
+            d.addProduct(new Products(0, "Domesticated Razorback", 51.00, 1));
         }
         System.out.println(d.toString());
     }
@@ -288,34 +325,64 @@ public class GeneralStore {
     public void createCashRegister() {
         CashRegister c = new CashRegister(0, true, 16, 1);
         for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnCashRegister() == true) {
-                c.setCurrentEmployee(employees.get(i));
-                changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
-            }
-        }
-        casregisters.add(c);
-
-        c = new CashRegister(0, true, 18, 1);
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnCashRegister() == true) {
-                if (casregisters.get(0).getCurrentEmployee() != employees.get(i)) {
+            if (employees.get(i).getAlreadyWorking() == false) {
+                if (employees.get(i).getOnCashRegister() == true) {
                     c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
+                    employees.get(i).setAlreadyWorking(true);
+                    changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
+                    break;
                 }
             }
         }
-        casregisters.add(c);
+        cashregisters.add(c);
 
-        c = new CashRegister(0, true, 20, 1);
-        for (int i = 0; i < employees.size(); i++) {
-            if (employees.get(i).getOnCashRegister() == true) {
-                if (casregisters.get(0).getCurrentEmployee() != employees.get(i) && casregisters.get(1).getCurrentEmployee() != employees.get(i)) {
-                    c.setCurrentEmployee(employees.get(i));
-                    changeLabel(c.getX()+1, c.getY(), employees.get(i).getFirstName());
+        if (customers.size() >= 5) {
+            System.out.println("Kassa 2 open");
+            c = new CashRegister(1, true, 18, 1);
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        c.setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
+                        break;
+                    }
                 }
             }
+            cashregisters.add(c);
         }
-        casregisters.add(c);
+
+        if (customers.size() >= 15) {
+            System.out.println("Kassa 3 open");
+            c = new CashRegister(2, true, 20, 1);
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        c.setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
+                        break;
+                    }
+                }
+            }
+            cashregisters.add(c);
+        }
+
+        if (customers.size() >= 30) {
+            System.out.println("Kassa 4 open");
+            c = new CashRegister(2, true, 22, 1);
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        c.setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
+                        break;
+                    }
+                }
+            }
+            cashregisters.add(c);
+        }
     }
 
     public void createWareHouse() {
@@ -323,11 +390,10 @@ public class GeneralStore {
         w.createFactory();
         for (int i = 0; i < products.size(); i++) {
 
-            for (int j = 0; j < w.getMaxAmount(); j++) {
+            for (int j = 0; j < 1; j++) {
                 w.addProduct(products.get(i));
             }
             warehouse.add(w);
-            System.out.println(warehouse.get(i));
         }
         w.addProducts();
     }

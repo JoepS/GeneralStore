@@ -24,15 +24,15 @@ public class Database {
         Connection conn = null;
         Statement stmt = null;
         try {
-            //STEP 2: Register JDBC driver
+            //Register JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
 
-            //STEP 3: Open a connection
+            //Open a connection
             System.out.println("Connecting to a selected database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             System.out.println("Connected database successfully...");
 
-            //STEP 4: Execute a query
+            //Execute a query
             System.out.println("Creating table in given database...");
             stmt = conn.createStatement();
 
@@ -44,6 +44,7 @@ public class Database {
                     + "(id INTEGER NULL AUTO_INCREMENT, "
                     + " product_name VARCHAR(255), "
                     + " product_price DOUBLE, "
+                    + " product_amount INT, "
                     + " PRIMARY KEY ( id ))";
 
             stmt.executeUpdate(sql);
@@ -52,7 +53,7 @@ public class Database {
             //Handle errors for JDBC
             se.printStackTrace();
         } catch (Exception e) {
-            //Handle errors for Class.forName
+            //Handle errors
             e.printStackTrace();
         } finally {
             //finally block used to close resources
