@@ -75,5 +75,30 @@ public class Department {
         }
         return s;
     }
+    
+    public Products removeProduct(){
+        if(isProductEmpty()){
+            refill();
+        }
+        Products p = products.get(products.size()-1);
+        products.remove(products.size()-1);
+        return p;
+    }
+    
+    public Boolean isProductEmpty(){
+        if(products.size() <= 1){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public void refill(){
+        Products a = products.get(0);
+        for (int i = 0; i < maxAmount - 1; i++) {
+            products.add(a);
+        }
+    }
 
 }
