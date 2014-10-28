@@ -19,6 +19,14 @@ public class CashRegister {
     private int x,y;
     private Employee currentEmployee;
 
+    public double getGoldStorage() {
+        return goldStorage;
+    }
+
+    public void setGoldStorage(double goldStorage) {
+        this.goldStorage = goldStorage;
+    }
+ 
     public void setCurrentEmployee(Employee currentEmployee) {
         this.currentEmployee = currentEmployee;
     }

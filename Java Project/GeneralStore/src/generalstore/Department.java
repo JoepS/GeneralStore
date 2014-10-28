@@ -70,6 +70,9 @@ public class Department {
         if (currentEmployee != null) {
             s += " Employee: " + currentEmployee.getFirstName();
         }
+        else{
+            s += "No employee?";
+        }
         if (!products.isEmpty()) {
             s += " Product " + products.get(0).getProductName() + " aantal: " + products.size();
         }

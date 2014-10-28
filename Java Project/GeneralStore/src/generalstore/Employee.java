@@ -19,15 +19,25 @@ public class Employee extends Person {
     private Boolean refillProducts;
     private Boolean onDepartment;
     private Boolean deliveryWagonDuty;
+    private Boolean alreadyWorking;
 
     Department department;
 
-    public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender, int x, int y) {
+    public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender, int x, int y, boolean working) {
         super(fName, lName, lvl, race, gender, x, y);
         this.onCashRegister = cashier;
         this.refillProducts = refill;
         this.onDepartment = department;
         this.deliveryWagonDuty = wagonUnloader;
+        this.alreadyWorking = working;
+    }
+
+    public void setAlreadyWorking(Boolean alreadyWorking) {
+        this.alreadyWorking = alreadyWorking;
+    }
+
+    public Boolean getAlreadyWorking() {
+        return this.alreadyWorking;
     }
 
     public Boolean getOnCashRegister() {
