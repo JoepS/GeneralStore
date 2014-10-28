@@ -53,8 +53,7 @@ public class ControlCustomers implements Runnable {
          */
         boolean going = true;
         while (going) {
-            boolean b = c.update(GeneralStore.pathways, GeneralStore.departments);
-            //going = b;
+            going = c.update(GeneralStore.pathways, GeneralStore.departments);
         }
     }
 }
