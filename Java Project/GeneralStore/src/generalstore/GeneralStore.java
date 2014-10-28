@@ -277,7 +277,6 @@ public class GeneralStore {
         for (int x = 0; x < d.getMaxAmount(); x++) {
             d.addProduct(new Products("Domesticated Razorback", 51.00, 10));
         }
-
         System.out.println(d.toString());
     }
 
