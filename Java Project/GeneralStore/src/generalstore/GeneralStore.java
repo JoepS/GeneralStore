@@ -55,6 +55,12 @@ public class GeneralStore {
         gs.createDepartements();
         gs.createCashRegister();
         gs.createCustomer();
+
+        try {
+            Thread.sleep(2000);
+            gs.addEmployeeToCashRegister();
+        } catch (Exception e) {
+        }
     }
 
     public void createCustomer() {
@@ -83,7 +89,6 @@ public class GeneralStore {
 
         //Thread t = new Thread(new ControlCustomers(customers));
         //t.start();
-
         Random rand1 = new Random();
         changeLabel(1, 26, "Customers:");
         while (true) {
@@ -94,38 +99,13 @@ public class GeneralStore {
                 //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
 
-                try {
-                    if (customers.size() >= 5 ) {
-                        System.out.println("Kassa 2 open");
-                        createCashRegister();
-                    } else {
-                        cashregisters.get(0).setGoldStorage(cashregisters.get(1).getGoldStorage());
-                        cashregisters.remove(1);
-                    }
-                    if (customers.size() >= 15) {
-                        createCashRegister();
-                    } else {
-                        cashregisters.get(0).setGoldStorage(cashregisters.get(2).getGoldStorage());
-                        cashregisters.remove(2);
-                    }
-                    if (customers.size() >= 30) {
-                        createCashRegister();
-                    } else {
-                        cashregisters.get(0).setGoldStorage(cashregisters.get(3).getGoldStorage());
-                        cashregisters.remove(3);
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("catch");
-                }
-
                 Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
 
             }
             try {
-                Thread.sleep(rand1.nextInt(500 - 100) + 100);
+                Thread.sleep(100);//rand1.nextInt(500 - 100) + 100
             } catch (InterruptedException ex) {
                 //Logger.getLogger(GeneralStore.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -145,17 +125,19 @@ public class GeneralStore {
     }
 
     static void createEmployee() {
-        Employee emp = new Employee(true, true, true, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0, false);
+        Employee emp = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, true, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0, false);
+        emp = new Employee(true, false, false, false, "Tyrande", "Whisperwind", 348, "Elf", false, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, true, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0, false);
+        emp = new Employee(true, false, false, false, "Jarod", "Shadowsong", 786, "Elf", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0, false);
+        emp = new Employee(false, false, true, false, "Garrosh", "Hellscream", 9, "Orc", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0, false);
+        emp = new Employee(false, true, true, false, "Vol'jin", "son of Sen'jin", 38, "Troll", true, 0, 0, false);
         employees.add(emp);
-        emp = new Employee(true, true, true, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0, false);
+        emp = new Employee(false, true, true, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0, false);
+        employees.add(emp);
+        emp = new Employee(true, true, false, true, "Headless", "Horseman", 298, "Orc", false, 0, 0, false);
         employees.add(emp);
     }
 
@@ -294,7 +276,7 @@ public class GeneralStore {
                     employees.get(i).setAlreadyWorking(true);
                     d.setCurrentEmployee(employees.get(i));
                     changeLabel(d.getX() - 1, d.getY(), employees.get(i).getFirstName());
-          break;
+                    break;
 
                 }
             }
@@ -336,52 +318,42 @@ public class GeneralStore {
         }
         cashregisters.add(c);
 
-        if (customers.size() >= 5) {
-            System.out.println("Kassa 2 open");
-            c = new CashRegister(1, true, 18, 1);
-            for (int i = 0; i < employees.size(); i++) {
-                if (employees.get(i).getAlreadyWorking() == false) {
-                    if (employees.get(i).getOnCashRegister() == true) {
-                        c.setCurrentEmployee(employees.get(i));
-                        employees.get(i).setAlreadyWorking(true);
-                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
-                        break;
-                    }
-                }
-            }
-            cashregisters.add(c);
-        }
+        c = new CashRegister(1, true, 18, 1);
+        cashregisters.add(c);
 
-        if (customers.size() >= 15) {
-            System.out.println("Kassa 3 open");
-            c = new CashRegister(2, true, 20, 1);
-            for (int i = 0; i < employees.size(); i++) {
-                if (employees.get(i).getAlreadyWorking() == false) {
-                    if (employees.get(i).getOnCashRegister() == true) {
-                        c.setCurrentEmployee(employees.get(i));
-                        employees.get(i).setAlreadyWorking(true);
-                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
-                        break;
-                    }
-                }
-            }
-            cashregisters.add(c);
-        }
+        c = new CashRegister(2, true, 20, 1);
+        cashregisters.add(c);
 
-        if (customers.size() >= 30) {
-            System.out.println("Kassa 4 open");
-            c = new CashRegister(2, true, 22, 1);
-            for (int i = 0; i < employees.size(); i++) {
-                if (employees.get(i).getAlreadyWorking() == false) {
-                    if (employees.get(i).getOnCashRegister() == true) {
-                        c.setCurrentEmployee(employees.get(i));
-                        employees.get(i).setAlreadyWorking(true);
-                        changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
-                        break;
+        c = new CashRegister(2, true, 22, 1);
+        cashregisters.add(c);
+
+//        for (int i = 0; i < employees.size(); i++) {
+//            if (employees.get(i).getAlreadyWorking() == false) {
+//                if (employees.get(i).getOnCashRegister() == true) {
+//                    c.setCurrentEmployee(employees.get(i));
+//                    employees.get(i).setAlreadyWorking(true);
+//                    changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
+//                    break;
+//                }
+//            }
+//        }
+    }
+
+    public void addEmployeeToCashRegister() {
+        while (true) {
+            if (customers.size() >= 5) {
+                for (int i = 0; i < employees.size(); i++) {
+                    if (employees.get(i).getAlreadyWorking() == false) {
+                        if (employees.get(i).getOnCashRegister() == true) {
+                            cashregisters.get(1).setCurrentEmployee(employees.get(i));
+                            employees.get(i).setAlreadyWorking(true);
+                            changeLabel(cashregisters.get(1).getX() + 1, cashregisters.get(1).getY(), employees.get(i).getFirstName());
+                            break;
+                        }
                     }
                 }
             }
-            cashregisters.add(c);
+
         }
     }
 
