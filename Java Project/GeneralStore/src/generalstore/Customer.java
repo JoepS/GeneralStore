@@ -149,13 +149,8 @@ public class Customer extends Person {
             // if(shoppingCart.size() == shoppingList.size()){
             doneShopping = true;
             //}
-<<<<<<< HEAD
-            if (doneshopping) {
-                System.out.println("To Register: " + this.getFirstName());
-=======
             if (doneShopping) {
-                System.out.println(this.getFirstName() + "is done shopping");
->>>>>>> e21e98e7827d10d88ef44a02976f9695c155154d
+                System.out.println("To Register: " + this.getFirstName());
 
                 changeLabel(this.getX(), this.getY(), "");
                 //welke kassa heeft een employee
@@ -181,11 +176,8 @@ public class Customer extends Person {
                 }
 
                 changeLabel(this.getX(), this.getY(), "");
-<<<<<<< HEAD
                 System.out.println("Leave Store: " + this.getFirstName());
-=======
-                System.out.println("REMOVE: " + this.getFirstName());
->>>>>>> e21e98e7827d10d88ef44a02976f9695c155154d
+
                 GeneralStore.customers.remove(this);
             }
         } else {
