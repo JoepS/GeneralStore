@@ -44,10 +44,12 @@ public class GeneralStore {
         cashregisters = new ArrayList<>();
         GeneralStore gs = new GeneralStore();
         Database db = new Database();
+        Warehouse w = new Warehouse();
 
         db.createDatabase();
         gs.createProduct();
         gs.createWareHouse();
+        w.createFactory();
 
         gs.createEmployee();
 
@@ -96,7 +98,7 @@ public class GeneralStore {
 
                 try {
                     if (customers.size() >= 5 ) {
-                        System.out.println("Kassa 2 open");
+                        //System.out.println("Kassa 2 open");
                         createCashRegister();
                     } else {
                         cashregisters.get(0).setGoldStorage(cashregisters.get(1).getGoldStorage());
@@ -160,7 +162,7 @@ public class GeneralStore {
     }
 
     static void createProduct() {
-        int max = Integer.MAX_VALUE;
+        int max = 5000;//Integer.MAX_VALUE;
 
         //Elixir
         Products prd1 = new Products(0, "Elixir of Healing", 3.00, max);
@@ -337,7 +339,7 @@ public class GeneralStore {
         cashregisters.add(c);
 
         if (customers.size() >= 5) {
-            System.out.println("Kassa 2 open");
+            //System.out.println("Kassa 2 open");
             c = new CashRegister(1, true, 18, 1);
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
@@ -353,7 +355,7 @@ public class GeneralStore {
         }
 
         if (customers.size() >= 15) {
-            System.out.println("Kassa 3 open");
+            //System.out.println("Kassa 3 open");
             c = new CashRegister(2, true, 20, 1);
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
@@ -369,7 +371,7 @@ public class GeneralStore {
         }
 
         if (customers.size() >= 30) {
-            System.out.println("Kassa 4 open");
+            //System.out.println("Kassa 4 open");
             c = new CashRegister(2, true, 22, 1);
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
