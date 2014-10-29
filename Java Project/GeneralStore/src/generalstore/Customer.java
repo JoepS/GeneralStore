@@ -150,7 +150,7 @@ public class Customer extends Person {
                 doneshopping = true;
             //}
             if (doneshopping) {
-                System.out.println(this.getFirstName() + "is done shopping");
+                System.out.println("To Register: " + this.getFirstName());
 
                 changeLabel(this.getX(), this.getY(), "");
                 Random r = new Random();
@@ -172,7 +172,7 @@ public class Customer extends Person {
                 }
 
                 changeLabel(this.getX(), this.getY(), "");
-                System.out.println("REMOVE" + this.getFirstName());
+                System.out.println("Leave Store: " + this.getFirstName());
                 GeneralStore.customers.remove(this);
             }
         }
