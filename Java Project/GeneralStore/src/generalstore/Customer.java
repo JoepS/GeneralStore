@@ -24,6 +24,8 @@ public class Customer extends Person {
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
+    
+    
 
     double cash;
 
@@ -109,7 +111,7 @@ public class Customer extends Person {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            this.destination(pathways.get(j).getXa(), pathways.get(j).getYa());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductA());
                             break;
@@ -121,7 +123,7 @@ public class Customer extends Person {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            this.destination(pathways.get(j).getXb(), pathways.get(j).getYb());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductB());
                             break;
@@ -143,8 +145,8 @@ public class Customer extends Person {
                     }
                 }
             }
-            boolean doneShopping = false;
 
+            boolean doneShopping = false;
             /*if (shoppingList.size() == shoppingCart.size()) {
              for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {
              if (shoppingList.get(i).getProductID() == shoppingCart.get(i).getProductID()) {
@@ -158,6 +160,7 @@ public class Customer extends Person {
             // if(shoppingCart.size() == shoppingList.size()){
             doneShopping = true;
             //}
+
             if (doneShopping) {
                 String sl = "Shoppinglist: ";
                 
@@ -170,10 +173,10 @@ public class Customer extends Person {
                 System.out.println("To Register: " + this.getFirstName() + ", " + this.getRace() + ", " + sl);
 
                 changeLabel(this.getX(), this.getY(), "");
-                
+                //welke kassa heeft een employee
+                //welke kasse is het rustigste
                 Random r = new Random();
                 CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(4));
-
                 if (cr.getCurrentEmployee() != null) {
                     this.destination(cr.getX(), cr.getY());
                     changeLabel(this.getX(), this.getY(), this.getFirstName());

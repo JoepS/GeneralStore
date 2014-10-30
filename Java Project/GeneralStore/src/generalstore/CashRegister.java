@@ -70,7 +70,7 @@ public class CashRegister {
         ShoppingCart = productList;
         double price = 0;
         for (Products item : productList) {
-            price += item.getProductPrice();
+                price += item.getProductPrice();
         }
         return price;
     }
