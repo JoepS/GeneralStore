@@ -105,13 +105,13 @@ public class GeneralStore {
                     if (customers.size() >= 15) {
                         createCashRegister();
                     } else {
-                        cashregisters.get(0).setGoldStorage(cashregisters.get(2).getGoldStorage());
+                        //cashregisters.get(0).setGoldStorage(cashregisters.get(2).getGoldStorage());
                         cashregisters.remove(2);
                     }
                     if (customers.size() >= 30) {
                         createCashRegister();
                     } else {
-                        cashregisters.get(0).setGoldStorage(cashregisters.get(3).getGoldStorage());
+                        //cashregisters.get(0).setGoldStorage(cashregisters.get(3).getGoldStorage());
                         cashregisters.remove(3);
                     }
 
