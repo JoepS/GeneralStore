@@ -17,7 +17,9 @@ public class Department {
     private ArrayList<Products> products;
     private int maxAmount = 50;
     private Employee currentEmployee;
-    private int x, y;
+    private int x, y;   
+    
+    Warehouse w = new Warehouse();
 
     public int getY() {
         return y;
@@ -98,10 +100,15 @@ public class Department {
     }
     
     public void refill(){
-        Products a = products.get(0);
-        for (int i = 0; i < maxAmount - 1; i++) {
-            products.add(a);
+        Products p  = products.get(0);
+
+        System.out.println("Refilling: " + p.getProductName());
+        
+        for (int i = 0; i < 20; i++) {
+            products.add(p);
         }
+        p.setProductAmount(p.getProductAmount() - 20);
+        w.updateProduct(p);
     }
 
 }

@@ -69,7 +69,7 @@ public class GeneralStoreTest {
         System.out.println("TEST: changeLabel");
         int x = 0;
         int y = 0;
-        String text = "";
+        String text = "hoi";
         GeneralStore instance = new GeneralStore();
         instance.changeLabel(x, y, text);
         // TODO review the generated test code and remove the default call to fail.
