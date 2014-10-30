@@ -25,11 +25,7 @@ public class Customer extends Person {
     //List of what the customer wants to buy
     public List<Products> shoppingList;
     
-    //waiting list for the CashRegister
-    public ArrayList<Person> waitingListCashOne;
-    public ArrayList<Person> waitingListCashTwo;
-    public ArrayList<Person> waitingListCashThirt;
-    public ArrayList<Person> waitingListCashFour;
+    
 
     double cash;
 
