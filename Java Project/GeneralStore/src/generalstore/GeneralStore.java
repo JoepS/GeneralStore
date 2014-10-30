@@ -354,9 +354,8 @@ public class GeneralStore {
                         }
                     }
                 }
-            }
-
-        }
+            } 
+       }
     }
 
     public void createWareHouse() {

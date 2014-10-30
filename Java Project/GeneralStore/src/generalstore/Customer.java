@@ -65,17 +65,32 @@ public class Customer extends Person {
         Random ran = new Random();
         double totalCash = cash;
         double cashLeft = 0;
-
         int num = ran.nextInt(14) + 1;
+        String race = this.getRace();//Orc Human Troll Elf
+
+        if (race == "Orc") {
+            shoppingList.add(products.get(0));
+            shoppingList.add(products.get(2));
+        } else if (race == "Troll") {
+            shoppingList.add(products.get(3));
+            shoppingList.add(products.get(4));
+        } else if (race == "Human") {
+            shoppingList.add(products.get(7));
+        } else {//Elf
+            shoppingList.add(products.get(8));
+            shoppingList.add(products.get(10));
+            shoppingList.add(products.get(12));
+        }
 
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
-                    shoppingList.add(products.get(ran.nextInt(10)));
+                    shoppingList.add(products.get(ran.nextInt(products.size()-1)));
                     cashLeft += shoppingList.get(shoppingList.size() - 1).getProductPrice();
                 }
             }
         }
+        
     }
 
     @Override
@@ -150,7 +165,16 @@ public class Customer extends Person {
             doneShopping = true;
             //}
             if (doneShopping) {
-                System.out.println("To Register: " + this.getFirstName());
+                
+                String sl = "Shoppinglist: ";
+                
+                for (int i = 0; i < shoppingList.size(); i++) {
+                    
+                    sl += shoppingList.get(i).getProductName() + ", ";
+                    
+                }
+                
+                System.out.println("To Register: " + this.getFirstName() + ", " + this.getRace() + ", " + sl);
 
                 changeLabel(this.getX(), this.getY(), "");
                 //welke kassa heeft een employee
