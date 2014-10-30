@@ -24,12 +24,6 @@ public class Customer extends Person {
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
-    
-    //waiting list for the CashRegister
-    public ArrayList<Person> waitingListCashOne;
-    public ArrayList<Person> waitingListCashTwo;
-    public ArrayList<Person> waitingListCashThirt;
-    public ArrayList<Person> waitingListCashFour;
 
     double cash;
 
@@ -153,10 +147,10 @@ public class Customer extends Person {
                 System.out.println("To Register: " + this.getFirstName());
 
                 changeLabel(this.getX(), this.getY(), "");
-                //welke kassa heeft een employee
-                //welke kasse is het rustigste
+                
                 Random r = new Random();
                 CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(4));
+
                 if (cr.getCurrentEmployee() != null) {
                     this.destination(cr.getX(), cr.getY());
                     changeLabel(this.getX(), this.getY(), this.getFirstName());
