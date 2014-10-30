@@ -5,6 +5,7 @@
  */
 package generalstore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +16,20 @@ public class CashRegister {
 
     private double goldStorage;
     private boolean checkoutEmployee;
-    private List<Products> ShoppingCart;    
-    private int x,y;
+    private List<Products> ShoppingCart;
+    private int x, y;
     private Employee currentEmployee;
+
+    //waiting list for the CashRegister
+    public ArrayList<Person> waitingListCash;
+
+    public ArrayList<Person> getWaitingListCash() {
+        return waitingListCash;
+    }
+
+    public void setWaitingListCash(ArrayList<Person> waitingListCash) {
+        this.waitingListCash = waitingListCash;
+    }
 
     public double getGoldStorage() {
         return goldStorage;
@@ -26,7 +38,7 @@ public class CashRegister {
     public void setGoldStorage(double goldStorage) {
         this.goldStorage = goldStorage;
     }
- 
+
     public void setCurrentEmployee(Employee currentEmployee) {
         this.currentEmployee = currentEmployee;
     }
@@ -55,7 +67,6 @@ public class CashRegister {
     //Total product price of the shoppingcart
     public double calculatePrice(List<Products> productList) {
 
-
         ShoppingCart = productList;
         double price = 0;
         for (Products item : productList) {
@@ -67,17 +78,17 @@ public class CashRegister {
     public void goldStorage(double gold) {
         goldStorage += gold;
     }
-    
-    public int getX(){
+
+    public int getX() {
         return x;
     }
 
     public int getY() {
         return y;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Money in register: " + goldStorage;
     }
 }
