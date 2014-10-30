@@ -105,11 +105,11 @@ public class Employee extends Person {
         return refillProduct;
     }
 
-    public void refill(Pathway pathway, Products product) {
+    public void refill(Pathway pathway, Products product, boolean temp) {
 
         Warehouse w = new Warehouse();
 
-        if (pathway.getProductA().equals(product)) {
+        if (pathway.getProductA().equals(product) && temp) {
             this.setAlreadyWorking(true);
             changeLabel(pathway.getXa() + 1, pathway.getYa(), this.getFirstName());
             pathway.refillA();
@@ -121,7 +121,7 @@ public class Employee extends Person {
             
             changeLabel(pathway.getXa() + 1, pathway.getYa(), "");
             this.setAlreadyWorking(false);
-        } else if (pathway.getProductB().equals(product)) {
+        } else if (pathway.getProductB().equals(product) && !temp) {
             this.setAlreadyWorking(true);
             changeLabel(pathway.getXb() + 1, pathway.getYb(), this.getFirstName());
             pathway.refillB();

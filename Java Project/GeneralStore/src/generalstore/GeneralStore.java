@@ -138,6 +138,8 @@ public class GeneralStore {
         employees.add(emp);
         emp = new Employee(false, true, false, false, "Fre", "Botter", 0, "Orc", false, 0, 0, false);
         employees.add(emp);
+        emp = new Employee(false, true, false, false, "Matthijs", "Hovestad", 20, "Troll", true, 0, 0, false);
+        employees.add(emp);
         emp = new Employee(false, true, false, false, "Joep", "Sijtsma", 20, "Human", true, 0, 0, false);
         employees.add(emp);
     }

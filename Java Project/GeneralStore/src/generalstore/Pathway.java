@@ -6,10 +6,14 @@
 package generalstore;
 
 import com.mchange.v2.c3p0.C3P0Registry;
+import static generalstore.GeneralStore.display;
+import java.awt.Component;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
@@ -112,10 +116,10 @@ public class Pathway {
     }
 
     public Products removeProductA() {
-        if (isProductBEmpty()) {
+        if (isProductAEmpty()) {
             for (int i = 0; i < GeneralStore.employees.size(); i++) {
                 if (GeneralStore.employees.get(i).getRefillProducts() == true && GeneralStore.employees.get(i).getAlreadyWorking() == false) {
-                    GeneralStore.employees.get(i).refill(this, productA);
+                    GeneralStore.employees.get(i).refill(this, productA, true);
                     break;
                 }
             }
@@ -125,6 +129,7 @@ public class Pathway {
             a = productsA.get(productsA.size() - 1);
             productsA.remove(productsA.size() - 1);
         }
+        changeLabel(this.getXa(), this.getYa() + 1, productsA.size() + "");
         return a;
     }
 
@@ -132,7 +137,7 @@ public class Pathway {
         if (isProductBEmpty()) {
             for (int i = 0; i < GeneralStore.employees.size(); i++) {
                 if (GeneralStore.employees.get(i).getRefillProducts() == true && GeneralStore.employees.get(i).getAlreadyWorking() == false) {
-                    GeneralStore.employees.get(i).refill(this, productB);
+                    GeneralStore.employees.get(i).refill(this, productB, false);
                     break;
                 }
             }
@@ -142,6 +147,7 @@ public class Pathway {
             b = productsB.get(productsB.size() - 1);
             productsB.remove(productsB.size() - 1);
         }
+        changeLabel(this.getXb(), this.getYb() - 1, productsB.size() + "");
         return b;
     }
 
@@ -200,5 +206,18 @@ public class Pathway {
         productB.setProductAmount(productB.getProductAmount() - maxAmount);
         w.updateProduct(productB);
     }
+    
+    public void changeLabel(int x, int y, String text) {
+        Component[] comp = display.getFrame().getContentPane().getComponents();
+        JPanel panel = (JPanel) comp[0];
+        comp = panel.getComponents();
+        for (int i = 0; i < comp.length; i++) {
+            if (comp[i].getName().equals(x + "," + y)) {
+                JLabel l = (JLabel) comp[i];
+                l.setText(text);
+            }
+        }
+    }
+    
 
 }
