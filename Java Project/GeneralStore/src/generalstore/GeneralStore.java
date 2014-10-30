@@ -95,31 +95,7 @@ public class GeneralStore {
                 customers.add(cst);
                 //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
-
-                try {
-                    if (customers.size() >= 5) {
-                        System.out.println("Kassa 2 open");
-                        createCashRegister();
-                    } else {
-                        //cashregisters.get(0).setGoldStorage(cashregisters.get(1).getGoldStorage());
-                        cashregisters.remove(1);
-                    }
-                    if (customers.size() >= 15) {
-                        createCashRegister();
-                    } else {
-                        //cashregisters.get(0).setGoldStorage(cashregisters.get(2).getGoldStorage());
-                        cashregisters.remove(2);
-                    }
-                    if (customers.size() >= 30) {
-                        createCashRegister();
-                    } else {
-                        //cashregisters.get(0).setGoldStorage(cashregisters.get(3).getGoldStorage());
-                        cashregisters.remove(3);
-                    }
-
-                } catch (Exception e) {
-                    System.out.println("catch");
-                }
+                               
                 Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
@@ -159,6 +135,10 @@ public class GeneralStore {
         emp = new Employee(false, true, true, true, "Uther", "the Lightbringer", 23, "Human", false, 0, 0, false);
         employees.add(emp);
         emp = new Employee(true, true, false, true, "Headless", "Horseman", 298, "Orc", false, 0, 0, false);
+        employees.add(emp);
+        emp = new Employee(false, true, false, false, "Fre", "Botter", 0, "Orc", false, 0, 0, false);
+        employees.add(emp);
+        emp = new Employee(false, true, false, false, "Joep", "Sijtsma", 20, "Human", true, 0, 0, false);
         employees.add(emp);
     }
 

@@ -6,6 +6,8 @@ package generalstore;
 
 import static generalstore.GeneralStore.display;
 import java.awt.Component;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -22,6 +24,8 @@ public class Employee extends Person {
     private Boolean alreadyWorking;
 
     Department department;
+
+    private Products refillProduct;
 
     public Employee(boolean cashier, boolean refill, boolean department, boolean wagonUnloader, String fName, String lName, int lvl, String race, Boolean gender, int x, int y, boolean working) {
         super(fName, lName, lvl, race, gender, x, y);
@@ -95,6 +99,44 @@ public class Employee extends Person {
                 l.setText(text);
             }
         }
+    }
+
+    public Products getRefillProduct() {
+        return refillProduct;
+    }
+
+    public void refill(Pathway pathway, Products product) {
+
+        Warehouse w = new Warehouse();
+
+        if (pathway.getProductA().equals(product)) {
+            this.setAlreadyWorking(true);
+            changeLabel(pathway.getXa() + 1, pathway.getYa(), this.getFirstName());
+            pathway.refillA();
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            changeLabel(pathway.getXa() + 1, pathway.getYa(), "");
+            this.setAlreadyWorking(false);
+        } else if (pathway.getProductB().equals(product)) {
+            this.setAlreadyWorking(true);
+            changeLabel(pathway.getXb() + 1, pathway.getYb(), this.getFirstName());
+            pathway.refillB();
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Employee.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            changeLabel(pathway.getXb() + 1, pathway.getYb(), "");
+            this.setAlreadyWorking(false);
+        } else {
+            System.out.println("Oeps er is iets verkeerd gegaan");
+        }
+
     }
 
 }

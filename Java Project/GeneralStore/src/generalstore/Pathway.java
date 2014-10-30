@@ -19,12 +19,14 @@ public class Pathway {
 
     private int id;
     private ArrayList<Products> productsA;
+    private Products productA;
     private ArrayList<Products> productsB;
-    private int maxAmount = 25;
+    private Products productB;
+    private int maxAmount = 50;
 
     private int xa, ya;
-    private int xb, yb;    
-    
+    private int xb, yb;
+
     Warehouse w = new Warehouse();
 
     public Pathway(int id, int xa, int ya, int xb, int yb) {
@@ -45,11 +47,17 @@ public class Pathway {
         if (productsA.size() < maxAmount) {
             productsA.add(p);
         }
+        if(productA == null){
+            productA = p;
+        }
     }
 
     public void addProductB(Products p) {
         if (productsB.size() < maxAmount) {
             productsB.add(p);
+        }
+        if(productB == null){
+            productB = p;
         }
     }
 
@@ -61,13 +69,13 @@ public class Pathway {
                 productsB.add(p);
             }
         } else if (productsB.isEmpty() && !productsA.isEmpty()) {
-            if (productsA.get(0).getProductID() == p.getProductID()) {
+            if (productA.getProductID() == p.getProductID()) {
                 productsA.add(p);
             }
         } else {
-            if (productsA.get(0).getProductID() == p.getProductID()) {
+            if (productA.getProductID() == p.getProductID()) {
                 productsA.add(p);
-            } else if (productsB.get(0).getProductID() == p.getProductID()) {
+            } else if (productB.getProductID() == p.getProductID()) {
                 productsB.add(p);
             }
         }
@@ -94,30 +102,46 @@ public class Pathway {
         String s = "" + this.id;
 
         if (!productsA.isEmpty()) {
-            s += " Product 1:" + productsA.get(0).getProductName() + " aantal: " + productsA.size();
+            s += " Product 1:" + productA.getProductName() + " aantal: " + productsA.size();
         }
         if (!productsB.isEmpty()) {
-            s += " Product 2:" + productsB.get(0).getProductName() + " aantal: " + productsB.size();
+            s += " Product 2:" + productB.getProductName() + " aantal: " + productsB.size();
         }
 
         return s;
     }
 
     public Products removeProductA() {
-        if (isProductAEmpty()) {
-            refillA();
+        if (isProductBEmpty()) {
+            for (int i = 0; i < GeneralStore.employees.size(); i++) {
+                if (GeneralStore.employees.get(i).getRefillProducts() == true && GeneralStore.employees.get(i).getAlreadyWorking() == false) {
+                    GeneralStore.employees.get(i).refill(this, productA);
+                    break;
+                }
+            }
         }
-        Products a = productsA.get(productsA.size() - 1);
-        productsA.remove(productsA.size() - 1);
+        Products a = null;
+        if (productsA.size() - 1 >= 0) {
+            a = productsA.get(productsA.size() - 1);
+            productsA.remove(productsA.size() - 1);
+        }
         return a;
     }
 
     public Products removeProductB() {
         if (isProductBEmpty()) {
-            refillB();
+            for (int i = 0; i < GeneralStore.employees.size(); i++) {
+                if (GeneralStore.employees.get(i).getRefillProducts() == true && GeneralStore.employees.get(i).getAlreadyWorking() == false) {
+                    GeneralStore.employees.get(i).refill(this, productB);
+                    break;
+                }
+            }
         }
-        Products b = productsB.get(productsB.size() - 1);
-        productsB.remove(productsB.size() - 1);
+        Products b = null;
+        if (productsB.size() - 1 >= 0) {
+            b = productsB.get(productsB.size() - 1);
+            productsB.remove(productsB.size() - 1);
+        }
         return b;
     }
 
@@ -136,11 +160,9 @@ public class Pathway {
     public int getYb() {
         return yb;
     }
-    
-    
 
     public Boolean isProductAEmpty() {
-        if (productsA.size() <= 5) {
+        if (productsA.size() <= 20) {
             return true;
         } else {
             return false;
@@ -148,7 +170,7 @@ public class Pathway {
     }
 
     public Boolean isProductBEmpty() {
-        if (productsB.size() <= 5) {
+        if (productsB.size() <= 20) {
             return true;
         } else {
             return false;
@@ -156,27 +178,27 @@ public class Pathway {
     }
 
     public void refillA() {
-        Products a = productsA.get(0);
-        
-        System.out.println("Refilling: " + a.getProductName());
-        
-        for (int i = 0; i < 20; i++) {
-            productsA.add(a);
+        //Products a = productsA.get(0);
+
+        System.out.println("Refilling: " + productA.getProductName());
+
+        for (int i = 0; i < maxAmount; i++) {
+            productsA.add(productA);
         }
-        a.setProductAmount(a.getProductAmount() - 20);
-        w.updateProduct(a);
+        productA.setProductAmount(productA.getProductAmount() - maxAmount);
+        w.updateProduct(productA);
     }
 
     public void refillB() {
-        Products b = productsB.get(0);
+        //Products b = productsB.get(0);
 
-        System.out.println("Refilling: " + b.getProductName());
-        
-        for (int i = 0; i < 20; i++) {
-            productsB.add(b);
+        System.out.println("Refilling: " + productB.getProductName());
+
+        for (int i = 0; i < maxAmount; i++) {
+            productsB.add(productB);
         }
-        b.setProductAmount(b.getProductAmount() - 20);
-        w.updateProduct(b);
+        productB.setProductAmount(productB.getProductAmount() - maxAmount);
+        w.updateProduct(productB);
     }
 
 }
