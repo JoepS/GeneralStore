@@ -63,6 +63,24 @@ public class Warehouse {
         }
         return productID;
     }
+    
+    public void updateProduct(Products p) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+
+            session.update(p);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
    
     @Override
     public String toString() {

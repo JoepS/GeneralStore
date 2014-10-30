@@ -8,8 +8,6 @@ package generalstore;
 import static generalstore.GeneralStore.display;
 import java.awt.Component;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
@@ -26,6 +24,12 @@ public class Customer extends Person {
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
+    
+    //waiting list for the CashRegister
+    public ArrayList<Person> waitingListCashOne;
+    public ArrayList<Person> waitingListCashTwo;
+    public ArrayList<Person> waitingListCashThirt;
+    public ArrayList<Person> waitingListCashFour;
 
     double cash;
 
@@ -130,8 +134,8 @@ public class Customer extends Person {
                     }
                 }
             }
-            boolean doneshopping = false;
 
+            boolean doneshopping = false;
             /*if (shoppingList.size() == shoppingCart.size()) {
              for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {
              if (shoppingList.get(i).getProductID() == shoppingCart.get(i).getProductID()) {
@@ -146,15 +150,19 @@ public class Customer extends Person {
             doneshopping = true;
             //}
             if (doneshopping) {
-                System.out.println(this.getFirstName() + "is done shopping");
+                System.out.println("To Register: " + this.getFirstName());
 
                 changeLabel(this.getX(), this.getY(), "");
+                //welke kassa heeft een employee
+                //welke kasse is het rustigste
                 Random r = new Random();
-                CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(2));
-                this.destination(cr.getX(), cr.getY());
-                changeLabel(this.getX(), this.getY(), this.getFirstName());
-                cr.goldStorage(cr.calculatePrice(this.shoppingCart));
-                System.out.println(cr.toString());
+                CashRegister cr = GeneralStore.cashregisters.get(r.nextInt(4));
+                if (cr.getCurrentEmployee() != null) {
+                    this.destination(cr.getX(), cr.getY());
+                    changeLabel(this.getX(), this.getY(), this.getFirstName());
+                    cr.goldStorage(cr.calculatePrice(this.shoppingCart));
+                    System.out.println(cr.toString());
+                }
                 try {
                     this.finalize();
                 } catch (Throwable ex) {
@@ -168,7 +176,8 @@ public class Customer extends Person {
                 }
 
                 changeLabel(this.getX(), this.getY(), "");
-                System.out.println("REMOVE" + this.getFirstName());
+                System.out.println("Leave Store: " + this.getFirstName());
+
                 GeneralStore.customers.remove(this);
             }
         } else {

@@ -20,10 +20,12 @@ public class Pathway {
     private int id;
     private ArrayList<Products> productsA;
     private ArrayList<Products> productsB;
-    private int maxAmount = 50;
+    private int maxAmount = 25;
 
     private int xa, ya;
-    private int xb, yb;
+    private int xb, yb;    
+    
+    Warehouse w = new Warehouse();
 
     public Pathway(int id, int xa, int ya, int xb, int yb) {
         this.id = id;
@@ -138,8 +140,7 @@ public class Pathway {
     
 
     public Boolean isProductAEmpty() {
-        if (productsA.size() <= 45) {
-            System.out.println(productsA.size() + productsA.get(0).getProductName());
+        if (productsA.size() <= 5) {
             return true;
         } else {
             return false;
@@ -147,8 +148,7 @@ public class Pathway {
     }
 
     public Boolean isProductBEmpty() {
-        if (productsB.size() <= 45) {
-            System.out.println(productsB.size() + productsB.get(0).getProductName());
+        if (productsB.size() <= 5) {
             return true;
         } else {
             return false;
@@ -156,36 +156,27 @@ public class Pathway {
     }
 
     public void refillA() {
-        //Statement stmt = null;
         Products a = productsA.get(0);
-        for (int i = 0; i < 5; i++) {
-
-            
-            
-            
-            
+        
+        System.out.println("Refilling: " + a.getProductName());
+        
+        for (int i = 0; i < 20; i++) {
             productsA.add(a);
-            System.out.println(productsA.size());
-            
-//            String sql = "UPDATE products "     
-//                    + " SET product_amount='50'"
-//                    + "WHERE product_name='Elixir of Healing'";
-//            
-//            try {
-//                stmt.executeUpdate(sql);
-//                System.out.println("5 producten verwijderd swa");
-//            } catch (SQLException ex) {
-//                Logger.getLogger(Pathway.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-
         }
+        a.setProductAmount(a.getProductAmount() - 20);
+        w.updateProduct(a);
     }
 
     public void refillB() {
         Products b = productsB.get(0);
-        for (int i = 0; i < 5; i++) {
+
+        System.out.println("Refilling: " + b.getProductName());
+        
+        for (int i = 0; i < 20; i++) {
             productsB.add(b);
-            System.out.println(productsB.size());
         }
+        b.setProductAmount(b.getProductAmount() - 20);
+        w.updateProduct(b);
     }
+
 }
