@@ -24,6 +24,15 @@ public class Customer extends Person {
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
+<<<<<<< HEAD
+=======
+
+    //waiting list for the CashRegister
+    public ArrayList<Person> waitingListCashOne;
+    public ArrayList<Person> waitingListCashTwo;
+    public ArrayList<Person> waitingListCashThirt;
+    public ArrayList<Person> waitingListCashFour;
+>>>>>>> Skrylax
 
     double cash;
 
@@ -59,17 +68,32 @@ public class Customer extends Person {
         Random ran = new Random();
         double totalCash = cash;
         double cashLeft = 0;
-
         int num = ran.nextInt(14) + 1;
+        String race = this.getRace();//Orc Human Troll Elf
+
+        if (race == "Orc") {
+            shoppingList.add(products.get(0));
+            shoppingList.add(products.get(2));
+        } else if (race == "Troll") {
+            shoppingList.add(products.get(3));
+            shoppingList.add(products.get(4));
+        } else if (race == "Human") {
+            shoppingList.add(products.get(7));
+        } else {//Elf
+            shoppingList.add(products.get(8));
+            shoppingList.add(products.get(10));
+            shoppingList.add(products.get(12));
+        }
 
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
-                    shoppingList.add(products.get(ran.nextInt(10)));
+                    shoppingList.add(products.get(ran.nextInt(products.size()-1)));
                     cashLeft += shoppingList.get(shoppingList.size() - 1).getProductPrice();
                 }
             }
         }
+        
     }
 
     @Override
@@ -144,7 +168,20 @@ public class Customer extends Person {
             doneShopping = true;
             //}
             if (doneShopping) {
+<<<<<<< HEAD
                 System.out.println("To Register: " + this.getFirstName());
+=======
+                
+                String sl = "Shoppinglist: ";
+                
+                for (int i = 0; i < shoppingList.size(); i++) {
+                    
+                    sl += shoppingList.get(i).getProductName() + ", ";
+                    
+                }
+                
+                System.out.println("To Register: " + this.getFirstName() + ", " + this.getRace() + ", " + sl);
+>>>>>>> Skrylax
 
                 changeLabel(this.getX(), this.getY(), "");
                 
@@ -170,6 +207,10 @@ public class Customer extends Person {
                 }
 
                 changeLabel(this.getX(), this.getY(), "");
+<<<<<<< HEAD
+=======
+
+>>>>>>> Skrylax
                 System.out.println("Leave Store: " + this.getFirstName());
 
                 GeneralStore.customers.remove(this);
