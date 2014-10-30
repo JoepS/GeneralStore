@@ -58,11 +58,6 @@ public class GeneralStore {
         gs.createCashRegister();
         gs.createCustomer();
 
-        try {
-            Thread.sleep(2000);
-            gs.addEmployeeToCashRegister();
-        } catch (Exception e) {
-        }
     }
 
     public void createCustomer() {
@@ -104,7 +99,7 @@ public class GeneralStore {
                 Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
-
+                addEmployeeToCashRegister();
             }
             try {
                 Thread.sleep(100);//rand1.nextInt(500 - 100) + 100
@@ -328,34 +323,59 @@ public class GeneralStore {
 
         c = new CashRegister(2, true, 22, 1);
         cashregisters.add(c);
-
-//        for (int i = 0; i < employees.size(); i++) {
-//            if (employees.get(i).getAlreadyWorking() == false) {
-//                if (employees.get(i).getOnCashRegister() == true) {
-//                    c.setCurrentEmployee(employees.get(i));
-//                    employees.get(i).setAlreadyWorking(true);
-//                    changeLabel(c.getX() + 1, c.getY(), employees.get(i).getFirstName());
-//                    break;
-//                }
-//            }
-//        }
     }
 
     public void addEmployeeToCashRegister() {
-        while (true) {
-            if (customers.size() >= 5) {
-                for (int i = 0; i < employees.size(); i++) {
-                    if (employees.get(i).getAlreadyWorking() == false) {
-                        if (employees.get(i).getOnCashRegister() == true) {
-                            cashregisters.get(1).setCurrentEmployee(employees.get(i));
-                            employees.get(i).setAlreadyWorking(true);
-                            changeLabel(cashregisters.get(1).getX() + 1, cashregisters.get(1).getY(), employees.get(i).getFirstName());
-                            break;
-                        }
+
+        if (customers.size() >= 15 && cashregisters.get(1).getCurrentEmployee() == null) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        cashregisters.get(1).setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(cashregisters.get(1).getX() + 1, cashregisters.get(1).getY(), employees.get(i).getFirstName());
+                        break;
                     }
                 }
             }
+        } else if (customers.size() < 15 && cashregisters.get(1).getCurrentEmployee() != null) {
+            changeLabel(cashregisters.get(1).getX() + 1, cashregisters.get(1).getY(), "");
+            cashregisters.get(1).getCurrentEmployee().setAlreadyWorking(false);
+            cashregisters.get(1).setCurrentEmployee(null);
+        }
 
+        if (customers.size() >= 25 && cashregisters.get(2).getCurrentEmployee() == null) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        cashregisters.get(2).setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(cashregisters.get(2).getX() + 1, cashregisters.get(2).getY(), employees.get(i).getFirstName());
+                        break;
+                    }
+                }
+            }
+        } else if (customers.size() < 25 && cashregisters.get(2).getCurrentEmployee() != null) {
+            changeLabel(cashregisters.get(2).getX() + 1, cashregisters.get(2).getY(), "");
+            cashregisters.get(2).getCurrentEmployee().setAlreadyWorking(false);
+            cashregisters.get(2).setCurrentEmployee(null);
+        }
+
+        if (customers.size() >= 30 && cashregisters.get(3).getCurrentEmployee() == null) {
+            for (int i = 0; i < employees.size(); i++) {
+                if (employees.get(i).getAlreadyWorking() == false) {
+                    if (employees.get(i).getOnCashRegister() == true) {
+                        cashregisters.get(3).setCurrentEmployee(employees.get(i));
+                        employees.get(i).setAlreadyWorking(true);
+                        changeLabel(cashregisters.get(3).getX() + 1, cashregisters.get(3).getY(), employees.get(i).getFirstName());
+                        break;
+                    }
+                }
+            }
+        } else if (customers.size() < 30 && cashregisters.get(3).getCurrentEmployee() != null) {
+            changeLabel(cashregisters.get(3).getX() + 1, cashregisters.get(3).getY(), "");
+            cashregisters.get(3).getCurrentEmployee().setAlreadyWorking(false);
+            cashregisters.get(3).setCurrentEmployee(null);
         }
     }
 
