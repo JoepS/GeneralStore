@@ -22,14 +22,17 @@ public class Pathway {
     private ArrayList<Products> productsB;
     private int maxAmount = 50;
 
-    private int x, y;
+    private int xa, ya;
+    private int xb, yb;
 
-    public Pathway(int id, int x, int y) {
+    public Pathway(int id, int xa, int ya, int xb, int yb) {
         this.id = id;
         this.productsA = new ArrayList<>();
         this.productsB = new ArrayList<>();
-        this.x = x;
-        this.y = y;
+        this.xa = xa;
+        this.ya = ya;
+        this.xb = xb;
+        this.yb = yb;
     }
 
     public int getMaxAmount() {
@@ -116,13 +119,23 @@ public class Pathway {
         return b;
     }
 
-    public int getX() {
-        return x;
+    public int getXa() {
+        return xa;
     }
 
-    public int getY() {
-        return y;
+    public int getYa() {
+        return ya;
     }
+
+    public int getXb() {
+        return xb;
+    }
+
+    public int getYb() {
+        return yb;
+    }
+    
+    
 
     public Boolean isProductAEmpty() {
         if (productsA.size() <= 45) {

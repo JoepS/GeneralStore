@@ -67,7 +67,7 @@ public class Customer extends Person {
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
-                    shoppingList.add(products.get(ran.nextInt(10)));
+                    shoppingList.add(products.get(ran.nextInt(14)));
                     cashLeft += shoppingList.get(shoppingList.size() - 1).getProductPrice();
                 }
             }
@@ -96,7 +96,7 @@ public class Customer extends Person {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            this.destination(pathways.get(j).getXa(), pathways.get(j).getYa());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductA());
                             break;
@@ -108,7 +108,7 @@ public class Customer extends Person {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
                             changeLabel(this.getX(), this.getY(), "");
-                            this.destination(pathways.get(j).getX(), pathways.get(j).getY());
+                            this.destination(pathways.get(j).getXb(), pathways.get(j).getYb());
                             changeLabel(this.getX(), this.getY(), this.getFirstName());
                             this.shoppingCart.add(pathways.get(j).removeProductB());
                             break;
@@ -132,22 +132,18 @@ public class Customer extends Person {
             }
             boolean doneshopping = false;
 
-            
-            
-
             /*if (shoppingList.size() == shoppingCart.size()) {
-                for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {
-                    if (shoppingList.get(i).getProductID() == shoppingCart.get(i).getProductID()) {
-                        doneshopping = true;
-                    } else {
-                        doneshopping = false;
-                        break;
-                    }
-                }
-            }*/
-            
-           // if(shoppingCart.size() == shoppingList.size()){
-                doneshopping = true;
+             for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {
+             if (shoppingList.get(i).getProductID() == shoppingCart.get(i).getProductID()) {
+             doneshopping = true;
+             } else {
+             doneshopping = false;
+             break;
+             }
+             }
+             }*/
+            // if(shoppingCart.size() == shoppingList.size()){
+            doneshopping = true;
             //}
             if (doneshopping) {
                 System.out.println(this.getFirstName() + "is done shopping");
@@ -175,8 +171,7 @@ public class Customer extends Person {
                 System.out.println("REMOVE" + this.getFirstName());
                 GeneralStore.customers.remove(this);
             }
-        }
-        else{
+        } else {
             return false;
         }
         return true;
