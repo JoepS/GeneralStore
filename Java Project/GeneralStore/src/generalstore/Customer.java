@@ -24,15 +24,6 @@ public class Customer extends Person {
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
-<<<<<<< HEAD
-=======
-
-    //waiting list for the CashRegister
-    public ArrayList<Person> waitingListCashOne;
-    public ArrayList<Person> waitingListCashTwo;
-    public ArrayList<Person> waitingListCashThirt;
-    public ArrayList<Person> waitingListCashFour;
->>>>>>> Skrylax
 
     double cash;
 
@@ -168,10 +159,6 @@ public class Customer extends Person {
             doneShopping = true;
             //}
             if (doneShopping) {
-<<<<<<< HEAD
-                System.out.println("To Register: " + this.getFirstName());
-=======
-                
                 String sl = "Shoppinglist: ";
                 
                 for (int i = 0; i < shoppingList.size(); i++) {
@@ -181,7 +168,6 @@ public class Customer extends Person {
                 }
                 
                 System.out.println("To Register: " + this.getFirstName() + ", " + this.getRace() + ", " + sl);
->>>>>>> Skrylax
 
                 changeLabel(this.getX(), this.getY(), "");
                 
@@ -207,10 +193,6 @@ public class Customer extends Person {
                 }
 
                 changeLabel(this.getX(), this.getY(), "");
-<<<<<<< HEAD
-=======
-
->>>>>>> Skrylax
                 System.out.println("Leave Store: " + this.getFirstName());
 
                 GeneralStore.customers.remove(this);
