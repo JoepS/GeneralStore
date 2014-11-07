@@ -5,6 +5,10 @@
  */
 package generalstore;
 
+import static generalstore.GeneralStore.display;
+import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,22 +21,22 @@ import static org.junit.Assert.*;
  * @author Fré-Meine
  */
 public class EmployeeTest {
-    
+
     public EmployeeTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,95 +47,11 @@ public class EmployeeTest {
     @Test
     public void testSetAlreadyWorking() {
         System.out.println("setAlreadyWorking");
-        Boolean alreadyWorking = null;
-        Employee instance = null;
+        Boolean alreadyWorking = false;
+       Employee instance = new Employee(true, true, true, true, "henk", "henk", 10, "orc", true, 0, 0, true);
         instance.setAlreadyWorking(alreadyWorking);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getAlreadyWorking method, of class Employee.
-     */
-    @Test
-    public void testGetAlreadyWorking() {
-        System.out.println("getAlreadyWorking");
-        Employee instance = null;
-        Boolean expResult = null;
         Boolean result = instance.getAlreadyWorking();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getOnCashRegister method, of class Employee.
-     */
-    @Test
-    public void testGetOnCashRegister() {
-        System.out.println("getOnCashRegister");
-        Employee instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getOnCashRegister();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getRefillProducts method, of class Employee.
-     */
-    @Test
-    public void testGetRefillProducts() {
-        System.out.println("getRefillProducts");
-        Employee instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getRefillProducts();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getOnDepartement method, of class Employee.
-     */
-    @Test
-    public void testGetOnDepartement() {
-        System.out.println("getOnDepartement");
-        Employee instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getOnDepartement();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDeliveryWagonDuty method, of class Employee.
-     */
-    @Test
-    public void testGetDeliveryWagonDuty() {
-        System.out.println("getDeliveryWagonDuty");
-        Employee instance = null;
-        Boolean expResult = null;
-        Boolean result = instance.getDeliveryWagonDuty();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getDepartment method, of class Employee.
-     */
-    @Test
-    public void testGetDepartment() {
-        System.out.println("getDepartment");
-        Employee instance = null;
-        Department expResult = null;
-        Department result = instance.getDepartment();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(result, alreadyWorking);
     }
 
     /**
@@ -153,11 +73,12 @@ public class EmployeeTest {
     @Test
     public void testSetRefillProducts() {
         System.out.println("setRefillProducts");
-        Boolean bool = null;
-        Employee instance = null;
+        Boolean bool = false;
+        Employee instance = new Employee(true, true, true, true, "henk", "henk", 10, "orc", true, 0, 0, true);
         instance.setRefillProducts(bool);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Boolean result = instance.getRefillProducts();
+        assertEquals(result, bool);
+
     }
 
     /**
@@ -166,24 +87,11 @@ public class EmployeeTest {
     @Test
     public void testSetOnDepartement() {
         System.out.println("setOnDepartement");
-        Boolean bool = null;
-        Employee instance = null;
+        Boolean bool = false;
+        Employee instance = new Employee(true, true, true, true, "henk", "henk", 10, "orc", true, 0, 0, true);
         instance.setOnDepartement(bool);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setDeliveryWagonDuty method, of class Employee.
-     */
-    @Test
-    public void testSetDeliveryWagonDuty() {
-        System.out.println("setDeliveryWagonDuty");
-        Boolean bool = null;
-        Employee instance = null;
-        instance.setDeliveryWagonDuty(bool);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Boolean result = instance.getOnDepartement();
+        assertEquals(result, bool);
     }
 
     /**
@@ -193,10 +101,10 @@ public class EmployeeTest {
     public void testSetDepartement() {
         System.out.println("setDepartement");
         Department department = null;
-        Employee instance = null;
+        Employee instance = new Employee(true, true, true, true, "henk", "henk", 10, "orc", true, 0, 0, true);
         instance.setDepartement(department);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Department result = instance.getDepartment();
+        assertEquals(result, department);
     }
 
     /**
@@ -204,23 +112,27 @@ public class EmployeeTest {
      */
     @Test
     public void testChangeLabel() {
-        System.out.println("changeLabel");
-        int x = 0;
-        int y = 0;
-        String text = "";
-        Employee instance = null;
-        instance.changeLabel(x, y, text);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-//        try {
-//            deel(3,0);
-//            fail();
-//        }
-//        catch (DivideByZeroException e) {
-//            
-//        }
-//        catch (Exception e) {
-//            fail();
-//        }
+
+        try {
+            System.out.println("changeLabel");
+            int x = 0;
+            int y = 0;
+            String text = "hoi";
+            Employee instance = new Employee(true, true, true, true, "henk", "henk", 10, "orc", true, 0, 0, true);
+            instance.changeLabel(x, y, text);
+            // TODO review the generated test code and remove the default call to fail.
+            Component[] comp = display.getFrame().getContentPane().getComponents();
+            JPanel panel = (JPanel) comp[0];
+            comp = panel.getComponents();
+            for (int i = 0; i < comp.length; i++) {
+                if (comp[i].getName().equals(x + "," + y)) {
+                    JLabel l = (JLabel) comp[i];
+                    assertEquals(l.getText(), text);
+                }
+            }
+        } catch (NullPointerException e) {
+            assertTrue("No frame", true);
+        }
+
     }
 }
