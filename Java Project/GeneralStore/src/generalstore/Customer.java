@@ -106,7 +106,7 @@ public class Customer extends Person {
                         if (pathways.get(j).getProductA().getProductID() == shoppingList.get(i).getProductID()) {
 
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(2500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -118,7 +118,7 @@ public class Customer extends Person {
                         } else if (pathways.get(j).getProductB().getProductID() == shoppingList.get(i).getProductID()) {
 
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(2500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -133,7 +133,7 @@ public class Customer extends Person {
                         if (departments.get(j).getProduct().getProductID() == shoppingList.get(i).getProductID()) {
 
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(2500);
                             } catch (InterruptedException ex) {
                                 Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                             }
@@ -190,7 +190,7 @@ public class Customer extends Person {
                 }
                 this.updatable = false;
                 try {
-                    Thread.sleep(500);
+                    Thread.sleep(4000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
                 }

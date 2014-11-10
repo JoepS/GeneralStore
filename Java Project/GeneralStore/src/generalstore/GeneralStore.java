@@ -100,9 +100,11 @@ public class GeneralStore {
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
                 addEmployeeToCashRegister();
+                showEmployees();
+                updateMoneys();
             }
             try {
-                Thread.sleep(100);//rand1.nextInt(500 - 100) + 100
+                Thread.sleep(rand1.nextInt(2500));
             } catch (InterruptedException ex) {
                 //Logger.getLogger(GeneralStore.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -333,7 +335,7 @@ public class GeneralStore {
 
     public void addEmployeeToCashRegister() {
 
-        if (customers.size() >= 15 && cashregisters.get(1).getCurrentEmployee() == null) {
+        if (customers.size() >= 10 && cashregisters.get(1).getCurrentEmployee() == null) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
                     if (employees.get(i).getOnCashRegister() == true) {
@@ -344,13 +346,13 @@ public class GeneralStore {
                     }
                 }
             }
-        } else if (customers.size() < 15 && cashregisters.get(1).getCurrentEmployee() != null) {
+        } else if (customers.size() < 10 && cashregisters.get(1).getCurrentEmployee() != null) {
             changeLabel(cashregisters.get(1).getX() + 1, cashregisters.get(1).getY(), "");
             cashregisters.get(1).getCurrentEmployee().setAlreadyWorking(false);
             cashregisters.get(1).setCurrentEmployee(null);
         }
 
-        if (customers.size() >= 25 && cashregisters.get(2).getCurrentEmployee() == null) {
+        if (customers.size() >= 15 && cashregisters.get(2).getCurrentEmployee() == null) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
                     if (employees.get(i).getOnCashRegister() == true) {
@@ -361,13 +363,13 @@ public class GeneralStore {
                     }
                 }
             }
-        } else if (customers.size() < 25 && cashregisters.get(2).getCurrentEmployee() != null) {
+        } else if (customers.size() < 15 && cashregisters.get(2).getCurrentEmployee() != null) {
             changeLabel(cashregisters.get(2).getX() + 1, cashregisters.get(2).getY(), "");
             cashregisters.get(2).getCurrentEmployee().setAlreadyWorking(false);
             cashregisters.get(2).setCurrentEmployee(null);
         }
 
-        if (customers.size() >= 30 && cashregisters.get(3).getCurrentEmployee() == null) {
+        if (customers.size() >= 20 && cashregisters.get(3).getCurrentEmployee() == null) {
             for (int i = 0; i < employees.size(); i++) {
                 if (employees.get(i).getAlreadyWorking() == false) {
                     if (employees.get(i).getOnCashRegister() == true) {
@@ -378,7 +380,7 @@ public class GeneralStore {
                     }
                 }
             }
-        } else if (customers.size() < 30 && cashregisters.get(3).getCurrentEmployee() != null) {
+        } else if (customers.size() < 20 && cashregisters.get(3).getCurrentEmployee() != null) {
             changeLabel(cashregisters.get(3).getX() + 1, cashregisters.get(3).getY(), "");
             cashregisters.get(3).getCurrentEmployee().setAlreadyWorking(false);
             cashregisters.get(3).setCurrentEmployee(null);
@@ -396,5 +398,31 @@ public class GeneralStore {
             warehouse.add(w);
         }
         w.addProducts();
+    }
+    
+    public void showEmployees(){
+        for (int i = 0; i < employees.size(); i++) {
+            if(employees.get(i).getAlreadyWorking() == false){
+                changeLabel(i, 1, employees.get(i).getFirstName());
+            }
+            else{
+                changeLabel(i, 1, "");
+            }
+        }
+    }
+    
+    public void updateMoneys(){
+        double money = 0;
+        for (int i = 0; i < cashregisters.size(); i++) {
+            money += cashregisters.get(i).getGoldStorage();
+        }        
+        changeLabel(7, 26, "Gold:");
+        String k = "";
+        if(money >= 1000){
+            money = money / 1000;
+            money = Math.round(money);
+            k = "k";
+        }
+        changeLabel(8, 26, money + k);
     }
 }
