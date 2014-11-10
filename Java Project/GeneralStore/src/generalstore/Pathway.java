@@ -5,7 +5,7 @@
  */
 package generalstore;
 
-import com.mchange.v2.c3p0.C3P0Registry;
+//import com.mchange.v2.c3p0.C3P0Registry;
 import static generalstore.GeneralStore.display;
 import java.awt.Component;
 import java.sql.*;

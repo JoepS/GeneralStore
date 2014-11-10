@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import net.sf.ehcache.util.ProductInfo;
+//import net.sf.ehcache.util.ProductInfo;
 
 /**
  *
