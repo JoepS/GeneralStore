@@ -10,10 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 //import net.sf.ehcache.util.ProductInfo;
 
-/**
- *
- * @author Joep
- */
 public class GeneralStore {
 
     static ArrayList<Customer> customers;

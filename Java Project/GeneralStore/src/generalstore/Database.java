@@ -1,14 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import java.sql.*;
 
 /**
- *
- * @author Matthijs
+ * This class handles the creating of a fresh database each time
+ * the program is ran.
+ * @author Skrylax
  */
 public class Database {
 
@@ -20,6 +17,9 @@ public class Database {
     static final String USER = "root";
     static final String PASS = "";
 
+    /**
+     * Creates a fresh database with products
+     */
     public void createDatabase() {
         Connection conn = null;
         Statement stmt = null;
@@ -74,6 +74,7 @@ public class Database {
         System.out.println("Goodbye!");
     }
 
+    //VOLGENS MIJ KAN DEZE METHODE WEG
     public void updateDatabase() {
         Connection conn = null;
         Statement stmt = null;

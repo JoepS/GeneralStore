@@ -1,12 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 /**
- *
- * @author Matthijs
+ * Abstract class for creating a default person
+ * @author Skrylax
  */
 public abstract class Person {
     private String firstName;

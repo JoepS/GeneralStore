@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import static generalstore.GeneralStore.display;
@@ -12,8 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Matthijs
+ * Employees are being created here including the proceedings they are 
+ * competent with.
+ * @author Skrylax
  */
 public class Employee extends Person {
 
@@ -105,6 +102,12 @@ public class Employee extends Person {
         return refillProduct;
     }
 
+    /**
+     * Called upon when the employee has to refill a pathway
+     * @param pathway
+     * @param product
+     * @param temp 
+     */
     public void refill(Pathway pathway, Products product, boolean temp) {
 
         Warehouse w = new Warehouse();
@@ -134,7 +137,7 @@ public class Employee extends Person {
             changeLabel(pathway.getXb() + 1, pathway.getYb(), "");
             this.setAlreadyWorking(false);
         } else {
-            System.out.println("Oeps er is iets verkeerd gegaan");
+            System.out.println("Something went wrong...");
         }
 
     }

@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import java.util.ArrayList;
@@ -13,8 +9,8 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 /**
- *
- * @author Joep
+ * Hold count of all the products and updates the datebase if needs be
+ * @author Skrylax
  */
 public class Warehouse {
 

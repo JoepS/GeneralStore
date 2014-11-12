@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 //import com.mchange.v2.c3p0.C3P0Registry;
@@ -15,10 +10,6 @@ import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author Fré-Meine
- */
 public class Pathway {
 
     private int id;

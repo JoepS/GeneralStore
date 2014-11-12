@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package generalstore;
 
 import static generalstore.GeneralStore.display;
@@ -16,19 +11,16 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Fré-Meine
+ * Creating customers with their attributes
+ * @author Skrylax
  */
 public class Customer extends Person {
 
     public List<Products> shoppingCart;
     //List of what the customer wants to buy
     public List<Products> shoppingList;
-    
-    
 
     double cash;
-
     boolean updatable = true;
 
     public Customer(String fName, String lName, int lvl, String race, Boolean gender, int x, int y, double cash) {
@@ -57,6 +49,10 @@ public class Customer extends Person {
         return temp;
     }
 
+    /**
+     * Creates a shopping list based on the race the customer has
+     * @param products 
+     */
     public void createShoppingList(ArrayList<Products> products) {
         Random ran = new Random();
         double totalCash = cash;
@@ -81,12 +77,12 @@ public class Customer extends Person {
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
-                    shoppingList.add(products.get(ran.nextInt(products.size()-1)));
+                    shoppingList.add(products.get(ran.nextInt(products.size() - 1)));
                     cashLeft += shoppingList.get(shoppingList.size() - 1).getProductPrice();
                 }
             }
         }
-        
+
     }
 
     @Override
@@ -163,13 +159,13 @@ public class Customer extends Person {
 
             if (doneShopping) {
                 String sl = "Shoppinglist: ";
-                
+
                 for (int i = 0; i < shoppingList.size(); i++) {
-                    
+
                     sl += shoppingList.get(i).getProductName() + ", ";
-                    
+
                 }
-                
+
                 System.out.println("To Register: " + this.getFirstName() + ", " + this.getRace() + ", " + sl);
 
                 changeLabel(this.getX(), this.getY(), "");
@@ -206,6 +202,12 @@ public class Customer extends Person {
         return true;
     }
 
+    /**
+     * Updates labels with Customer names
+     * X-coord@param x
+     * Y-coord@param y
+     * Customer name@param text 
+     */
     public void changeLabel(int x, int y, String text) {
         Component[] comp = display.getFrame().getContentPane().getComponents();
         JPanel panel = (JPanel) comp[0];
