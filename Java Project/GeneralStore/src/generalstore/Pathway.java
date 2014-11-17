@@ -3,10 +3,7 @@ package generalstore;
 //import com.mchange.v2.c3p0.C3P0Registry;
 import static generalstore.GeneralStore.display;
 import java.awt.Component;
-import java.sql.*;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -37,7 +34,7 @@ public class Pathway {
     public int getMaxAmount() {
         return maxAmount;
     }
-
+    /* each productway has two product, this methode fills the first product */
     public void addProductA(Products p) {
         if (productsA.size() < maxAmount) {
             productsA.add(p);
@@ -46,7 +43,7 @@ public class Pathway {
             productA = p;
         }
     }
-
+ /* each productway has two product, this methode fills the seconds product */
     public void addProductB(Products p) {
         if (productsB.size() < maxAmount) {
             productsB.add(p);
@@ -173,7 +170,7 @@ public class Pathway {
             return false;
         }
     }
-
+ /* This methode update the database when products are almost empty*/
     public void refillA() {
         //Products a = productsA.get(0);
 

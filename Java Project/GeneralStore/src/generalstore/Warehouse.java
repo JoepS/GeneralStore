@@ -59,7 +59,7 @@ public class Warehouse {
         }
         return productID;
     }
-    
+    /* Method to UPDATE a product in the database */
     public void updateProduct(Products p) {
         Session session = factory.openSession();
         Transaction tx = null;

@@ -59,7 +59,7 @@ public class Customer extends Person {
         double cashLeft = 0;
         int num = ran.nextInt(14) + 1;
         String race = this.getRace();//Orc Human Troll Elf
-
+        // each race has their own products.
         if (race == "Orc") {
             shoppingList.add(products.get(0));
             shoppingList.add(products.get(2));
@@ -73,7 +73,7 @@ public class Customer extends Person {
             shoppingList.add(products.get(10));
             shoppingList.add(products.get(12));
         }
-
+        //each race has also some random products. this part here will create a shopping list with random products
         for (int i = 0; i < num; i++) {
             for (int j = 0; j < products.size(); j++) {
                 if (cashLeft + products.get(j).getProductPrice() < totalCash) {
@@ -93,7 +93,8 @@ public class Customer extends Person {
         }
         return this.getFirstName() + " " + this.getLevel() + " " + this.getRace() + " " + gender;
     }
-
+/*This methode will update the shoppinglist of the custemer. When it takes a product it has to remove it from his shopping list.
+    Also a customer needs to sleep for 2 seconds when it takes a product.*/
     public synchronized boolean update(ArrayList<Pathway> pathways, ArrayList<Department> departments) {
         if (updatable) {
             for (int i = 0; i < shoppingList.size(); i++) {
@@ -141,7 +142,7 @@ public class Customer extends Person {
                     }
                 }
             }
-
+// When customer is done shopping it has to pay. This part will choose a cashregister and kick them out of the general store.
             boolean doneShopping = false;
             /*if (shoppingList.size() == shoppingCart.size()) {
              for (int i = 0; i < shoppingList.size() && i < shoppingCart.size(); i++) {

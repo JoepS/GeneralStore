@@ -55,6 +55,9 @@ public class GeneralStore {
         gs.createCustomer();
 
     }
+    
+    /* Create customers, with random name from a txt file. 
+     Also random race, age and gender. Time when customer will be create is also random. */
 
     public void createCustomer() {
         List<String> races = new ArrayList();
@@ -91,7 +94,7 @@ public class GeneralStore {
                 customers.add(cst);
                 //System.out.println(customers.size() + " " + cst.toString());
                 changeLabel(cst.getX(), cst.getY(), cst.getFirstName());
-                               
+
                 Thread t = new Thread(new ControlCustomers(cst), cst.getFirstName());
                 t.start();
                 changeLabel(2, 26, "" + customers.size());
@@ -118,6 +121,8 @@ public class GeneralStore {
             }
         }
     }
+    
+    /*Create employees */
 
     static void createEmployee() {
         Employee emp = new Employee(true, true, false, false, "Orgrim", "Doomhammer", 12, "Orc", true, 0, 0, false);
@@ -141,6 +146,8 @@ public class GeneralStore {
         emp = new Employee(false, true, false, false, "Joep", "Sijtsma", 20, "Human", true, 0, 0, false);
         employees.add(emp);
     }
+    
+    /*Create products */
 
     static void createProduct() {
         int max = 5000;
@@ -304,7 +311,7 @@ public class GeneralStore {
         }
         System.out.println(d.toString());
     }
-
+/*Create 4 cashregister and add one employee to it. */
     public void createCashRegister() {
         CashRegister c = new CashRegister(0, true, 16, 1);
         for (int i = 0; i < employees.size(); i++) {
@@ -328,7 +335,7 @@ public class GeneralStore {
         c = new CashRegister(2, true, 22, 1);
         cashregisters.add(c);
     }
-
+/*add employees to the cashregister when where are x amount of customers. Also remove the employees when x amount is <. */
     public void addEmployeeToCashRegister() {
 
         if (customers.size() >= 10 && cashregisters.get(1).getCurrentEmployee() == null) {
@@ -395,26 +402,25 @@ public class GeneralStore {
         }
         w.addProducts();
     }
-    
-    public void showEmployees(){
+
+    public void showEmployees() {
         for (int i = 0; i < employees.size(); i++) {
-            if(employees.get(i).getAlreadyWorking() == false){
+            if (employees.get(i).getAlreadyWorking() == false) {
                 changeLabel(i, 1, employees.get(i).getFirstName());
-            }
-            else{
+            } else {
                 changeLabel(i, 1, "");
             }
         }
     }
-    
-    public void updateMoneys(){
+
+    public void updateMoneys() {
         double money = 0;
         for (int i = 0; i < cashregisters.size(); i++) {
             money += cashregisters.get(i).getGoldStorage();
-        }        
+        }
         changeLabel(7, 26, "Gold:");
         String k = "";
-        if(money >= 1000){
+        if (money >= 1000) {
             money = money / 1000;
             money = Math.round(money);
             k = "k";
