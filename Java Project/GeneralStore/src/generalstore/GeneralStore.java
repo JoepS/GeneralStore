@@ -83,8 +83,6 @@ public class GeneralStore {
             System.out.println(e.toString());
         }
 
-        //Thread t = new Thread(new ControlCustomers(customers));
-        //t.start();
         Random rand1 = new Random();
         changeLabel(1, 26, "Customers:");
         while (true) {
@@ -198,65 +196,49 @@ public class GeneralStore {
     }
 
     public void createPathways() {
-        //for (int i = 0; i < 1; i++) {
         Pathway p = new Pathway(0, 12, 7, 12, 22);
-        //Random r = new Random();
-        //int productA = r.nextInt(products.size());
-        //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
-            p.addProductA(products.get(6)); //p.addProductA(products.get(productA));
-            p.addProductB(products.get(7));//       p.addProductB(products.get(productB));
+            p.addProductA(products.get(6));
+            p.addProductB(products.get(7));
         }
         System.out.println(p.toString());
         pathways.add(p);
 
         p = new Pathway(0, 8, 7, 8, 22);
-        //Random r = new Random();
-        //int productA = r.nextInt(products.size());
-        //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
-            p.addProductA(products.get(3)); //p.addProductA(products.get(productA));
-            p.addProductB(products.get(4));//       p.addProductB(products.get(productB));
+            p.addProductA(products.get(3));
+            p.addProductB(products.get(4));
         }
         System.out.println(p.toString());
         pathways.add(p);
 
         p = new Pathway(0, 4, 7, 4, 22);
-        //Random r = new Random();
-        //int productA = r.nextInt(products.size());
-        //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
-            p.addProductA(products.get(0)); //p.addProductA(products.get(productA));
-            p.addProductB(products.get(1));//       p.addProductB(products.get(productB));
+            p.addProductA(products.get(0));
+            p.addProductB(products.get(1));
         }
         System.out.println(p.toString());
         pathways.add(p);
 
         p = new Pathway(0, 16, 7, 16, 22);
-        //Random r = new Random();
-        //int productA = r.nextInt(products.size());
-        //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
-            p.addProductA(products.get(2)); //p.addProductA(products.get(productA));
-            p.addProductB(products.get(5));//       p.addProductB(products.get(productB));
+            p.addProductA(products.get(2));
+            p.addProductB(products.get(5));
         }
         System.out.println(p.toString());
         pathways.add(p);
 
         p = new Pathway(0, 20, 7, 20, 22);
-        //Random r = new Random();
-        //int productA = r.nextInt(products.size());
-        //int productB = r.nextInt(products.size());
         for (int x = 0; x < p.getMaxAmount(); x++) {
-            p.addProductA(products.get(8)); //p.addProductA(products.get(productA));
-            p.addProductB(products.get(9));//       p.addProductB(products.get(productB));
+            p.addProductA(products.get(8));
+            p.addProductB(products.get(9));
         }
         System.out.println(p.toString());
         pathways.add(p);
-
-        // }
     }
-
+    
+    //Het creëren van de 3 departements
+    
     public void createDepartements() {
         Department d = new Department(0, 3, 6);
         departments.add(d);

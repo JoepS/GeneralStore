@@ -1,7 +1,9 @@
 package generalstore;
 
 import java.util.ArrayList;
-
+/**
+ * Een afdeling.
+ */
 public class Department {
 
     private int id;

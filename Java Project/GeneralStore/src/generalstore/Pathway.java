@@ -15,8 +15,10 @@ public class Pathway {
     private ArrayList<Products> productsB;
     private Products productB;
     private int maxAmount = 50;
-
+    
+    //De locatie van product a
     private int xa, ya;
+    //De locatie van product b
     private int xb, yb;
 
     Warehouse w = new Warehouse();
@@ -52,7 +54,7 @@ public class Pathway {
             productB = p;
         }
     }
-
+    //Overbodige methode.
     public void addProduct(Products p) {
         if (productsA.isEmpty() && productsB.isEmpty()) {
             productsA.add(p);
@@ -172,7 +174,6 @@ public class Pathway {
     }
  /* This methode update the database when products are almost empty*/
     public void refillA() {
-        //Products a = productsA.get(0);
 
         System.out.println("Refilling: " + productA.getProductName());
 
@@ -184,7 +185,6 @@ public class Pathway {
     }
 
     public void refillB() {
-        //Products b = productsB.get(0);
 
         System.out.println("Refilling: " + productB.getProductName());
 
