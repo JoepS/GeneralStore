@@ -97,7 +97,7 @@ public class Display {
                     l.setBackground(Color.red);
                 } else if (map[y][x] == 3) {
                     //Pathway
-                    l.setBackground(Color.blue);
+                    l.setBackground(Color.CYAN);
                     l.setBorder(BorderFactory.createLineBorder(Color.black));
                 } else if (map[y][x] == 4) {
                     //Kassa

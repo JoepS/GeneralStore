@@ -74,7 +74,6 @@ public class Database {
         System.out.println("Goodbye!");
     }
 
-    //VOLGENS MIJ KAN DEZE METHODE WEG
     public void updateDatabase() {
         Connection conn = null;
         Statement stmt = null;

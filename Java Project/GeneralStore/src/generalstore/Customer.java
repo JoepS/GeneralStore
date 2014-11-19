@@ -93,7 +93,7 @@ public class Customer extends Person {
         }
         return this.getFirstName() + " " + this.getLevel() + " " + this.getRace() + " " + gender;
     }
-/*This methode will update the shoppinglist of the custemer. When it takes a product it has to remove it from his shopping list.
+/*This methode will update the shoppinglist of the customer. When it takes a product it has to remove it from his shopping list.
     Also a customer needs to sleep for 2 seconds when it takes a product.*/
     public synchronized boolean update(ArrayList<Pathway> pathways, ArrayList<Department> departments) {
         if (updatable) {

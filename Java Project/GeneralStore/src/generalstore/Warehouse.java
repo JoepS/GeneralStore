@@ -9,7 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 /**
- * Hold count of all the products and updates the datebase if needs be
+ * Hold count of all the products and updates the database if needs be
  * @author Skrylax
  */
 public class Warehouse {
